@@ -4,22 +4,25 @@
         <meta charset="UTF-8">
             <title>Personal Page</title>
         <link rel="stylesheet" href="css/index.css">
+        <script type="text/javascript" src="js/index.js"></script>
     </head>
     <body>
-    <div class="navi">
+    <div class="navi" id="navi">
         <!--导航栏-->
-        <div class="navi_top">
+        <div class="navi_top" id="navi_top">
             <a href="#" class="icon"><img src="images/icon.jpg" alt=""></a>
         </div>
-        <div class="navi_bottom">
+        <div class="navi_bottom" id="navi_bottom">
             <h4 class="name">Sin alma</h4>
             <p class="quotate_p">Stay simple,stay navie.</p>
             <div class="home_div">主页</div>
             <div class="ablum_div">相册</div>
             <div class="moreFunc">
-                <button class="articles_btn">所有文章</button>
+                <!--<button class="articles_btn">所有文章</button>-->
+                <a class="articles_btn">所有文章</a>
                 /
-                <button class="abountMe_btn">关于我</button>
+                <!--<button class="abountMe_btn" id="abountMe_btn">关于我</button>-->
+                <a class="abountMe_btn" id="abountMe_btn">关于我</a>
             </div>
             <div class="friendsLink">
                 <a href="https://github.com/Sinalma" class="github" target="_blank"><img src="images/github.png" alt=""></a>
@@ -30,12 +33,29 @@
     </div>
 
     <!--内容模块-->
-    <div class="content">
+    <div class="content" id="content">
         <div class="catalogue">
-            <ul class="introduction"></ul>
+            <ul class="introduction">
+                <li>Sin alma</li>
+                <li>毕业于医学院</li>
+                <li>享受生活</li>
+                <li>目前潜心学习编程</li>
+                <li>理想做一个优秀的人</li>
+            </ul>
             <ul class="menu"></ul>
         </div>
-        <ul></ul>
+        <ul class="content_articles">
+            <li>
+                <div class="leftLine"></div>
+            </li>
+            <li>
+                <div class="leftLine"></div>
+            </li>
+            <li>
+                <div class="leftLine"></div>
+            </li>
+        </ul>
+        <ul class="content_ablum"></ul>
     </div>
     </body>
 </html>
