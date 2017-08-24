@@ -1,0 +1,81 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+
+body{
+    height: 100%;
+    background-color: #d9d9d9;
+}
+
+/*导航栏-起始位置为左侧*/
+.navi{
+    width: 300px;
+    height: 100%;
+    background-color: white;
+    float: left;
+    text-align: center;
+}
+.navi .top_gray{
+    width: 100%;
+    height: 180px;
+    background-color: #4d4d4d;
+    position: relative;
+}
+.navi .top_gray .icon img{
+    width: 130px;
+    height: 130px;
+    border-radius: 70px;
+    box-sizing: border-box;
+    border: 5px solid white;
+    position: absolute;
+    bottom: -62px;
+    left: 50%;
+    margin-left: -65px;
+}
+.navi .bottom_white{
+    background-color: #ffffff;
+}
+.navi .name{
+    font-size: 27px;
+    margin-top: 90px;
+    color: #929292;
+}
+.navi .bottom_white .quotate_p{
+    margin-top: 40px;
+    color: #999999;
+}
+.navi .bottom_white div{
+    color: #696969;
+    border: 0px;
+    background-color: white;
+}
+.navi .bottom_white button{
+     color: #696969;
+     border: 0px;
+     background-color: white;
+ }
+.navi .bottom_white .home_div{
+    font-size: 14px;
+    margin-top: 50px;
+}
+.navi .bottom_white .ablum_div{
+    margin-top: 10px;
+    font-size: 14px;
+}
+.navi .bottom_white .moreFunc{
+    margin-top: 50px;
+}
+.navi .bottom_white .moreFunc>button{
+    font-size: 13px;
+    cursor: pointer;
+}
+.navi .bottom_white .friendsLink{
+    margin-top: 25px;
+    box-sizing: border-box;
+}
+.navi .bottom_white .friendsLink>a>img{
+    width: 32px;
+    height: 32px;
+    margin: 5px;
+}
