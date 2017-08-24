@@ -1,11 +1,21 @@
-*{
+address, b, big, blockquote, body, center, cite, code, dd, del, div, dl, dt, em, fieldset, font, form, h1, h2, h3, h4, h5, h6, html, i, iframe, img, ins, label, legend, li, ol, p, pre, small, span, strong, u, ul, var{
     padding: 0;
     margin: 0;
 }
 
-body{
+/*全局设置*/
+ul li{
+    list-style: none;
+}
+a{
+    text-decoration: none;
+}
+html{
     height: 100%;
-    background-color: #d9d9d9;
+}
+body{
+    background-color: #eaeaea;
+    height: 100%;
 }
 
 /*导航栏-起始位置为左侧*/
@@ -13,16 +23,22 @@ body{
     width: 300px;
     height: 100%;
     background-color: white;
-    float: left;
+    /*background-color: purple;*/
+    /*float: left;*/
     text-align: center;
+    position: fixed;
+    left: 0;
+    top:0;
+    /*添加右侧阴影*/
+    /*opacity: 0;*/
 }
-.navi .top_gray{
+.navi .navi_top{
     width: 100%;
     height: 180px;
     background-color: #4d4d4d;
     position: relative;
 }
-.navi .top_gray .icon img{
+.navi .navi_top .icon img{
     width: 130px;
     height: 130px;
     border-radius: 70px;
@@ -33,49 +49,75 @@ body{
     left: 50%;
     margin-left: -65px;
 }
-.navi .bottom_white{
+.navi .navi_bottom{
     background-color: #ffffff;
+    width: 100%;
+    height: 90%;
+    padding-top: 90px;
+    box-sizing: border-box;
 }
-.navi .name{
+.navi .navi_bottom .name{
     font-size: 27px;
-    margin-top: 90px;
+    /*margin-top: 90px;*/
     color: #929292;
 }
-.navi .bottom_white .quotate_p{
+.navi .navi_bottom .quotate_p{
     margin-top: 40px;
     color: #999999;
 }
-.navi .bottom_white div{
+.navi .navi_bottom div{
     color: #696969;
-    border: 0px;
-    background-color: white;
+    /*border: 0px;*/
+    /*background-color: white;*/
 }
-.navi .bottom_white button{
+.navi .navi_bottom button{
      color: #696969;
      border: 0px;
      background-color: white;
- }
-.navi .bottom_white .home_div{
+}
+.navi .navi_bottom .home_div{
     font-size: 14px;
     margin-top: 50px;
 }
-.navi .bottom_white .ablum_div{
+.navi .navi_bottom .ablum_div{
     margin-top: 10px;
     font-size: 14px;
 }
-.navi .bottom_white .moreFunc{
+.navi .navi_bottom .moreFunc{
     margin-top: 50px;
 }
-.navi .bottom_white .moreFunc>button{
+.navi .navi_bottom .moreFunc>button{
     font-size: 13px;
     cursor: pointer;
 }
-.navi .bottom_white .friendsLink{
+.navi .navi_bottom .friendsLink{
     margin-top: 25px;
-    box-sizing: border-box;
+    /*box-sizing: border-box;*/
 }
-.navi .bottom_white .friendsLink>a>img{
+.navi .navi_bottom .friendsLink>a>img{
     width: 32px;
     height: 32px;
     margin: 5px;
+}
+
+/*内容模块布局*/
+.content{
+    background-color: antiquewhite;
+    height: 100%;
+    width: 100%;
+    /*position: absolute;*/
+    /*right: 30px;*/
+    /*top: 30px;*/
+    /*left: 30px;*/
+    margin-left: 300px;
+    /*position: relative;*/
+    /*float: left;*/
+}
+.content .catalogue{
+    background-color: red;
+    width: 360px;
+    height: 100%;
+    /*position: absolute;*/
+    /*left: 0;*/
+    /*top:0;*/
 }
