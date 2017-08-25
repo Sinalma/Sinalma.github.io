@@ -14,8 +14,6 @@ window.onload = function () {
     var navi_top = $('navi_top');
     var navi_bottom = $('navi_bottom');
     // 左侧目录显示状态
-    // var isShowCatalogue = false;
-    // var catalogueAnimState = false;
     var catalogueState = false;
     navi_top.onclick = function () {
         content.style.transform = 'none';

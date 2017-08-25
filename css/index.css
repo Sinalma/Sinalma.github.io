@@ -84,9 +84,23 @@ body{
     font-size: 14px;
     margin-top: 50px;
 }
+.navi .navi_bottom .home_div>a{
+    color: #696969;
+    pointer-events: auto;
+}
+.navi .navi_bottom .home_div a:hover{
+    color: burlywood;
+}
 .navi .navi_bottom .ablum_div{
     margin-top: 10px;
     font-size: 14px;
+}
+.navi .navi_bottom .ablum_div>a{
+    color: #696969;
+    pointer-events: auto;
+}
+.navi .navi_bottom .ablum_div a:hover{
+    color: burlywood;
 }
 .navi .navi_bottom .moreFunc{
     margin-top: 50px;
@@ -104,6 +118,9 @@ body{
     margin-top: 25px;
     /*box-sizing: border-box;*/
 }
+.navi .navi_bottom .friendsLink>a{
+    pointer-events: auto;
+}
 .navi .navi_bottom .friendsLink>a>img{
     width: 32px;
     height: 32px;
@@ -112,7 +129,7 @@ body{
 
 /*内容模块布局*/
 .content{
-    background-color: antiquewhite;
+    /*background-color: antiquewhite;*/
     height: 100%;
     width: 100%;
     position: absolute;
@@ -122,9 +139,10 @@ body{
     /*margin-left: 300px;*/
     /*position: relative;*/
     /*float: left;*/
-    transition: all 0.5s ease-in-out 0s;
+    transition: transform 0.5s ease-in-out 0s,backgroundSize 0.5s ease-in-out 1.5s;
     background-image: url("../images/bg1.jpg");
     background-size: 0px;
+    overflow-y:hidden;
 }
 /*内容模块-左侧目录*/
 .content .catalogue{
@@ -158,13 +176,21 @@ body{
     margin-left: 330px;
     margin-right: 30px;
     height: 100%;
-    margin-top: 30px;
+    /*margin-top: 30px;*/
+    overflow-y:auto;
 }
+/*每个文章*/
 .content .content_articles>li{
     background-color: white;
     width: 100%;
     height: 500px;
     position: relative;
+    margin-top: 30px;
+    padding: 30px 60px 0px 60px;
+    box-sizing: border-box;
+    font-size: 22px;
+}
+.content .content_articles>li:last-child{
     margin-bottom: 30px;
 }
 .content .content_articles>li>.leftLine{
