@@ -46,27 +46,24 @@ window.onload = function () {
     writeArticle(0,'## github+域名实现个人博客\n\n','images/article_01',' - 1.创建github账号\n\n - 2.创建代码仓库\n\n' +
         '- 3.代码仓库命名为"用户名+github.io"\n\n - 4.购买域名，阿里云.top域名第一年只要1元钱\n\n  - 5.代码仓库创建CNAME文件，内容为域名，加不加www都可以\n\n - 6.解析域名，选择CNAME，主机记录为www，内容为"github用户名+github.io"\n\n - 7.打开浏览器，输入域名即可访问github上的代码仓库\n\n');
 
-
-    /**
-     * <li>
-     <div class="leftLine"></div>
-     <div class="art_title"></div>
-     <div class="art_picture"></div>
-     <div class="art_mainText"></div>
-     <div class="art_foot">
-     <div class="art_tag"></div>
-     <a href="" class="art_fullTextBtn">展开全文 >></a>
-     </div>
-     </li>
-     * */
-
-    // createLi();
-
-
 }
 
-function writeArticleToLi(title,imgName,content) {
+function writeArticleToLi() {
+    var li = createLi();
+    var leftLine = createLeftLine();
+    li.appendChild(leftLine);
+}
 
+// 创建文章左侧黑色竖线条
+function createLeftLine() {
+    var leftLine = document.createElement('div');
+    leftLine.style.width = '5px';
+    leftLine.style.height = '80px';
+    leftLine.style.position = 'absolute';
+    leftLine.style.left = '0';
+    leftLine.style.top = '0';
+    leftLine.style.backgroundColor = 'black';
+    return leftLine;
 }
 
 // 快速创建文章-li
@@ -80,10 +77,24 @@ function createLi() {
     li.style.marginTop = '30px';
     li.style.padding = '30px 60px 0px 60px';
     li.style.boxSizing = 'border-box';
-    li.style.overflow = hidden;
+    li.style.overflow = 'hidden';
     return li;
 }
 
+// html存在所有子元素时，调用此接口赋值文章数据
+// 并且格式如下
+/**
+ * <li>
+ <div class="leftLine"></div>
+ <div class="art_title"></div>
+ <div class="art_picture"></div>
+ <div class="art_mainText"></div>
+ <div class="art_foot">
+ <div class="art_tag"></div>
+ <a href="" class="art_fullTextBtn">展开全文 >></a>
+ </div>
+ </li>
+ * */
 function writeArticle(i,title,imgName,content) {
     var art_li = content_articles.children[i];
     var art_title = art_li.children[1];
