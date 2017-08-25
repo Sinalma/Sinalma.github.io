@@ -183,12 +183,13 @@ body{
 .content .content_articles>li{
     background-color: white;
     width: 100%;
-    height: 500px;
+    height: 750px;
     position: relative;
     margin-top: 30px;
     padding: 30px 60px 0px 60px;
     box-sizing: border-box;
     font-size: 22px;
+    overflow: hidden;
 }
 .content .content_articles>li:last-child{
     margin-bottom: 30px;
@@ -200,5 +201,55 @@ body{
     position: absolute;
     left: 0;
     top:0;
+}
+.content .content_articles>li>div{
+    color: #69697f;
+    font-size: 17px;
+    margin-bottom: 30px;
+}
+.content .content_articles>li>.art_title{
+    width: 100%;
+    height: 50px;
+}
+.content .content_articles>li>.art_picture{
+    width: 400px;
+    height: 250px;
+}
+.content .content_articles>li>.art_mainText{
+    width: 100%;
+    height: 250px;
+}
+.content .content_articles>li>.art_foot{
+    width: 100%;
+    border-top: 1px solid #cccccc;
+    height: 80px;
+    /*background-color: aquamarine;*/
+    position: relative;
+}
+/*内容-文章-底部模块*/
+.content .content_articles>li>.art_foot>.art_tag{
+    /*background-color: red;*/
+    width: 70%;
+    height: 100%;
+    /*float: left;*/
+    position: absolute;
+    top:0;
+    left: 0;
+}
+.content .content_articles>li>.art_foot>.art_fullTextBtn{
+    /*float: right;*/
+    background-color: #4d4d4d;
+    width: 80px;
+    height: 25px;
+    line-height: 25px;
+    color: white;
+    font-size: 13px;
+    display: block;
+    text-align: center;
+    position: absolute;
+    top:50%;
+    right:0;
+    transform: translateY(-50%);
+    border-radius: 3px;
 }
 /*内容模块-右侧内容-相册模块*/

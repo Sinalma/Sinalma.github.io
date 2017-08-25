@@ -5,6 +5,8 @@
             <title>Personal Page</title>
         <link rel="stylesheet" href="css/index.css">
         <script type="text/javascript" src="js/index.js"></script>
+        <!--引入markdown--marked.js-->
+        <script src="marked-master/lib/marked.js"></script>
     </head>
     <body>
     <div class="navi" id="navi">
@@ -43,20 +45,16 @@
             </ul>
             <ul class="menu"></ul>
         </div>
-        <ul class="content_articles">
+        <ul class="content_articles" id="content_articles">
             <li>
                 <div class="leftLine"></div>
-                <div>想念大家。</div>
-                <div>每一秒都在想</div>
-                <div>不知道你们能不能感受到。</div>
-            </li>
-            <li>
-                <div class="leftLine"></div>
-                你注册帐号，填了帐号密码，点击了注册，服务器生成本次的私钥和公钥，客户端从服务器获取公钥，客户端把你的明文密码用HD5的方式加密，这个方式不能逆推回去，再用公钥对密码进行加盐，也就是扰乱加密，防止在密码传输过程被截获破译，再将这个密码发送给服务器，服务器用私钥对密码解盐，然后保存经过hd5加密的密码，所以真正的原始密码只有你自己知道。
-                下次登录的时候，填好帐号密码点击登录，从服务器获取公钥进行加盐，并传到服务器，服务器利用私钥进行解盐，利用解盐后的密码和服务器保存的密码进行对比，相同则通知客户端登录成功。
-            </li>
-            <li>
-                <div class="leftLine"></div>
+                <div class="art_title"></div>
+                <div class="art_picture"></div>
+                <div class="art_mainText"></div>
+                <div class="art_foot">
+                    <div class="art_tag"></div>
+                    <a href="" class="art_fullTextBtn">展开全文 >></a>
+                </div>
             </li>
         </ul>
         <ul class="content_ablum"></ul>
