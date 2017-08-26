@@ -55,36 +55,90 @@ window.onload = function () {
         '- 4.购买域名，阿里云.top域名第一年只要1元钱\n\n  ' +
         '- 5.代码仓库创建CNAME文件，内容为域名，加不加www都可以\n\n ' +
         '- 6.解析域名，选择CNAME，主机记录为www，内容为"github用户名+github.io"\n\n ' +
-        '- 7.打开浏览器，输入域名即可访问github上的代码仓库\n\n'
+        '- 7.打开浏览器，输入域名即可访问github上的代码仓库\n\n',
+        new Array("博客","github","原创")
     );
 
+    writeArticleToLi(
+        '## github+域名实现个人博客\n\n',
+        'images/inner_picture01.jpg',
+        '- 1.创建github账号\n\n ' +
+        '- 2.创建代码仓库\n\n' +
+        '- 3.代码仓库命名为"用户名+github.io"\n\n ' +
+        '- 4.购买域名，阿里云.top域名第一年只要1元钱\n\n  ' +
+        '- 5.代码仓库创建CNAME文件，内容为域名，加不加www都可以\n\n ' +
+        '- 6.解析域名，选择CNAME，主机记录为www，内容为"github用户名+github.io"\n\n ' +
+        '- 7.打开浏览器，输入域名即可访问github上的代码仓库\n\n',
+        new Array("博客","github","原创")
+    );
 
-    writeArticleToLi('## github+域名实现个人博客\n\n','images/inner_picture01.jpg',' - 1.创建github账号\n\n - 2.创建代码仓库\n\n' +
-        '- 3.代码仓库命名为"用户名+github.io"\n\n - 4.购买域名，阿里云.top域名第一年只要1元钱\n\n  - 5.代码仓库创建CNAME文件，内容为域名，加不加www都可以\n\n - 6.解析域名，选择CNAME，主机记录为www，内容为"github用户名+github.io"\n\n - 7.打开浏览器，输入域名即可访问github上的代码仓库\n\n');
+    writeArticleToLi(
+        '## github+域名实现个人博客\n\n',
+        'images/inner_picture01.jpg',
+        '- 1.创建github账号\n\n ' +
+        '- 2.创建代码仓库\n\n' +
+        '- 3.代码仓库命名为"用户名+github.io"\n\n ' +
+        '- 4.购买域名，阿里云.top域名第一年只要1元钱\n\n  ' +
+        '- 5.代码仓库创建CNAME文件，内容为域名，加不加www都可以\n\n ' +
+        '- 6.解析域名，选择CNAME，主机记录为www，内容为"github用户名+github.io"\n\n ' +
+        '- 7.打开浏览器，输入域名即可访问github上的代码仓库\n\n',
+        new Array("博客","github","原创")
+    );
 
+    writeArticleToLi(
+        '## github+域名实现个人博客\n\n',
+        'images/inner_picture01.jpg',
+        '- 1.创建github账号\n\n ' +
+        '- 2.创建代码仓库\n\n' +
+        '- 3.代码仓库命名为"用户名+github.io"\n\n ' +
+        '- 4.购买域名，阿里云.top域名第一年只要1元钱\n\n  ' +
+        '- 5.代码仓库创建CNAME文件，内容为域名，加不加www都可以\n\n ' +
+        '- 6.解析域名，选择CNAME，主机记录为www，内容为"github用户名+github.io"\n\n ' +
+        '- 7.打开浏览器，输入域名即可访问github上的代码仓库\n\n',
+        new Array("博客","github","原创")
+    );
 
-    writeArticleToLi('## github+域名实现个人博客\n\n','images/inner_picture01.jpg',' - 1.创建github账号\n\n - 2.创建代码仓库\n\n' +
-        '- 3.代码仓库命名为"用户名+github.io"\n\n - 4.购买域名，阿里云.top域名第一年只要1元钱\n\n  - 5.代码仓库创建CNAME文件，内容为域名，加不加www都可以\n\n - 6.解析域名，选择CNAME，主机记录为www，内容为"github用户名+github.io"\n\n - 7.打开浏览器，输入域名即可访问github上的代码仓库\n\n');
+    writeArticleToLi(
+        '## github+域名实现个人博客\n\n',
+        'images/inner_picture01.jpg',
+        '- 1.创建github账号\n\n ' +
+        '- 2.创建代码仓库\n\n' +
+        '- 3.代码仓库命名为"用户名+github.io"\n\n ' +
+        '- 4.购买域名，阿里云.top域名第一年只要1元钱\n\n  ' +
+        '- 5.代码仓库创建CNAME文件，内容为域名，加不加www都可以\n\n ' +
+        '- 6.解析域名，选择CNAME，主机记录为www，内容为"github用户名+github.io"\n\n ' +
+        '- 7.打开浏览器，输入域名即可访问github上的代码仓库\n\n',
+        new Array("博客","github","原创")
+    );
 
+    writeArticleToLi(
+        '## github+域名实现个人博客\n\n',
+        'images/inner_picture01.jpg',
+        '- 1.创建github账号\n\n ' +
+        '- 2.创建代码仓库\n\n' +
+        '- 3.代码仓库命名为"用户名+github.io"\n\n ' +
+        '- 4.购买域名，阿里云.top域名第一年只要1元钱\n\n  ' +
+        '- 5.代码仓库创建CNAME文件，内容为域名，加不加www都可以\n\n ' +
+        '- 6.解析域名，选择CNAME，主机记录为www，内容为"github用户名+github.io"\n\n ' +
+        '- 7.打开浏览器，输入域名即可访问github上的代码仓库\n\n',
+        new Array("博客","github","原创")
+    );
 
-    writeArticleToLi('## github+域名实现个人博客\n\n','images/inner_picture01.jpg',' - 1.创建github账号\n\n - 2.创建代码仓库\n\n' +
-        '- 3.代码仓库命名为"用户名+github.io"\n\n - 4.购买域名，阿里云.top域名第一年只要1元钱\n\n  - 5.代码仓库创建CNAME文件，内容为域名，加不加www都可以\n\n - 6.解析域名，选择CNAME，主机记录为www，内容为"github用户名+github.io"\n\n - 7.打开浏览器，输入域名即可访问github上的代码仓库\n\n');
-
-
-    writeArticleToLi('## github+域名实现个人博客\n\n','images/inner_picture01.jpg',' - 1.创建github账号\n\n - 2.创建代码仓库\n\n' +
-        '- 3.代码仓库命名为"用户名+github.io"\n\n - 4.购买域名，阿里云.top域名第一年只要1元钱\n\n  - 5.代码仓库创建CNAME文件，内容为域名，加不加www都可以\n\n - 6.解析域名，选择CNAME，主机记录为www，内容为"github用户名+github.io"\n\n - 7.打开浏览器，输入域名即可访问github上的代码仓库\n\n');
-
-
-    writeArticleToLi('## github+域名实现个人博客\n\n','images/inner_picture01.jpg',' - 1.创建github账号\n\n - 2.创建代码仓库\n\n' +
-        '- 3.代码仓库命名为"用户名+github.io"\n\n - 4.购买域名，阿里云.top域名第一年只要1元钱\n\n  - 5.代码仓库创建CNAME文件，内容为域名，加不加www都可以\n\n - 6.解析域名，选择CNAME，主机记录为www，内容为"github用户名+github.io"\n\n - 7.打开浏览器，输入域名即可访问github上的代码仓库\n\n');
-
-
-    writeArticleToLi('## github+域名实现个人博客\n\n','images/inner_picture01.jpg',' - 1.创建github账号\n\n - 2.创建代码仓库\n\n' +
-        '- 3.代码仓库命名为"用户名+github.io"\n\n - 4.购买域名，阿里云.top域名第一年只要1元钱\n\n  - 5.代码仓库创建CNAME文件，内容为域名，加不加www都可以\n\n - 6.解析域名，选择CNAME，主机记录为www，内容为"github用户名+github.io"\n\n - 7.打开浏览器，输入域名即可访问github上的代码仓库\n\n');
-
+    writeArticleToLi(
+        '## github+域名实现个人博客\n\n',
+        'images/inner_picture01.jpg',
+        '- 1.创建github账号\n\n ' +
+        '- 2.创建代码仓库\n\n' +
+        '- 3.代码仓库命名为"用户名+github.io"\n\n ' +
+        '- 4.购买域名，阿里云.top域名第一年只要1元钱\n\n  ' +
+        '- 5.代码仓库创建CNAME文件，内容为域名，加不加www都可以\n\n ' +
+        '- 6.解析域名，选择CNAME，主机记录为www，内容为"github用户名+github.io"\n\n ' +
+        '- 7.打开浏览器，输入域名即可访问github上的代码仓库\n\n',
+        new Array("博客","github","原创")
+    );
 }
 
-function writeArticleToLi(title,imgN,artText) {
+function writeArticleToLi(title,imgN,artText,tags) {
     var li = createLi();
     var leftLine = createLeftLine();
     li.appendChild(leftLine);
@@ -94,11 +148,67 @@ function writeArticleToLi(title,imgN,artText) {
     li.appendChild(img);
     var artContent = createArtContent(artText);
     li.appendChild(artContent);
-    var foot = createArtFoot();
+    var foot = createArtFoot(tags);
     li.appendChild(foot);
 }
 
-function createArtFoot() {
+function createTagIcon() {
+    var tagIcon = document.createElement('img');
+    tagIcon.setAttribute('src','images/tagicon.png');
+    tagIcon.style.width = '16px';
+    tagIcon.style.height = '16px';
+    // tagIcon.style.position = 'absolute';
+    // tagIcon.style.top = '50%';
+    // tagIcon.style.left = 0;
+    tagIcon.style.float = 'left';
+    tagIcon.style.marginTop = '2.5px';
+    // tagIcon.style.transform = 'translateY(-50%)';
+
+    return tagIcon;
+}
+
+function createTag(tagN) {
+    var a = document.createElement('a');
+    a.style.backgroundColor = '#ba9575';
+    // a.style.width = '40px';
+    a.style.height = '20px';
+    a.style.lineHeight = '20px';
+    a.style.color = 'white';
+    a.style.fontSize = '11px';
+    a.style.marginLeft = '20px';
+    a.style.float = 'left';
+    a.style.paddingLeft = '10px';
+    a.style.paddingRight = '10px';
+    a.style.borderTopLeftRadius = '30px';
+    a.style.borderBottomLeftRadius = '30px';
+    a.style.borderTopRightRadius = '10px';
+    a.style.borderBottomRightRadius = '10px';
+    a.style.position = 'relative';
+    a.style.cursor = 'pointer';
+    a.onmouseover = function () {
+        a.style.opacity = '0.7';
+
+    }
+    a.onmouseout = function () {
+        a.style.opacity = '1';
+
+    }
+    // 绘制左侧小圆点
+    var circle = document.createElement('div');
+    circle.style.backgroundColor = 'red';
+    circle.style.width = '5px';
+    circle.style.height = '5px';
+    circle.style.borderRadius = '2.5px';
+    circle.style.position = 'absolute';
+    circle.style.top = '50%';
+    circle.style.left = '1px';
+    circle.style.transform = 'translateY(-50%)';
+    a.appendChild(circle);
+    a.innerText = tagN;
+    return a;
+}
+
+function createArtFoot(tags) {
     var foot = document.createElement('div');
     foot.style.width = '100%';
     foot.style.height = '80px';
@@ -108,10 +218,19 @@ function createArtFoot() {
     // 创建左侧标签模块
     var artTag = document.createElement('div');
     artTag.style.width = '70%';
-    artTag.style.height = '100%';
+    artTag.style.height = '20px';// 100%
     artTag.style.position = 'absolute';
-    artTag.style.top = '0';
+    artTag.style.top = '50%';//0
+    artTag.style.transform = 'translateY(-50%)';
     artTag.style.left = '0';
+
+    // 添加文章标签
+    var tagIcon = createTagIcon();
+    artTag.appendChild(tagIcon);
+    for (var i=0;i<tags.length;i++){
+        var tag = createTag(tags[i]);
+        artTag.appendChild(tag);
+    }
     foot.appendChild(artTag);
 
     // 创建右侧展开全文按钮
@@ -133,6 +252,12 @@ function createArtFoot() {
     artFullTextBtn.style.transform = 'translateY(-50%)';
     foot.appendChild(artFullTextBtn);
 
+    artFullTextBtn.onmouseover = function () {
+        artFullTextBtn.style.backgroundColor = 'black';
+    }
+    artFullTextBtn.onmouseout = function () {
+        artFullTextBtn.style.backgroundColor = '#4d4d4d';
+    }
     artFullTextBtn.onclick = function () {
         alert('0')
     }

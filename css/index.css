@@ -32,6 +32,7 @@ body{
     left: 0;
     top:0;
     /*添加右侧阴影*/
+    box-shadow: 1px 1px 15px white;
     /*opacity: 0;*/
     z-index: 1000;
 }
