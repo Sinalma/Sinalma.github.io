@@ -46,12 +46,125 @@ window.onload = function () {
     writeArticle(0,'## github+域名实现个人博客\n\n','images/article_01',' - 1.创建github账号\n\n - 2.创建代码仓库\n\n' +
         '- 3.代码仓库命名为"用户名+github.io"\n\n - 4.购买域名，阿里云.top域名第一年只要1元钱\n\n  - 5.代码仓库创建CNAME文件，内容为域名，加不加www都可以\n\n - 6.解析域名，选择CNAME，主机记录为www，内容为"github用户名+github.io"\n\n - 7.打开浏览器，输入域名即可访问github上的代码仓库\n\n');
 
+    writeArticleToLi(
+        '## github+域名实现个人博客\n\n',
+        'images/inner_picture01.jpg',
+        '- 1.创建github账号\n\n ' +
+        '- 2.创建代码仓库\n\n' +
+        '- 3.代码仓库命名为"用户名+github.io"\n\n ' +
+        '- 4.购买域名，阿里云.top域名第一年只要1元钱\n\n  ' +
+        '- 5.代码仓库创建CNAME文件，内容为域名，加不加www都可以\n\n ' +
+        '- 6.解析域名，选择CNAME，主机记录为www，内容为"github用户名+github.io"\n\n ' +
+        '- 7.打开浏览器，输入域名即可访问github上的代码仓库\n\n'
+    );
+
+
+    writeArticleToLi('## github+域名实现个人博客\n\n','images/inner_picture01.jpg',' - 1.创建github账号\n\n - 2.创建代码仓库\n\n' +
+        '- 3.代码仓库命名为"用户名+github.io"\n\n - 4.购买域名，阿里云.top域名第一年只要1元钱\n\n  - 5.代码仓库创建CNAME文件，内容为域名，加不加www都可以\n\n - 6.解析域名，选择CNAME，主机记录为www，内容为"github用户名+github.io"\n\n - 7.打开浏览器，输入域名即可访问github上的代码仓库\n\n');
+
+
+    writeArticleToLi('## github+域名实现个人博客\n\n','images/inner_picture01.jpg',' - 1.创建github账号\n\n - 2.创建代码仓库\n\n' +
+        '- 3.代码仓库命名为"用户名+github.io"\n\n - 4.购买域名，阿里云.top域名第一年只要1元钱\n\n  - 5.代码仓库创建CNAME文件，内容为域名，加不加www都可以\n\n - 6.解析域名，选择CNAME，主机记录为www，内容为"github用户名+github.io"\n\n - 7.打开浏览器，输入域名即可访问github上的代码仓库\n\n');
+
+
+    writeArticleToLi('## github+域名实现个人博客\n\n','images/inner_picture01.jpg',' - 1.创建github账号\n\n - 2.创建代码仓库\n\n' +
+        '- 3.代码仓库命名为"用户名+github.io"\n\n - 4.购买域名，阿里云.top域名第一年只要1元钱\n\n  - 5.代码仓库创建CNAME文件，内容为域名，加不加www都可以\n\n - 6.解析域名，选择CNAME，主机记录为www，内容为"github用户名+github.io"\n\n - 7.打开浏览器，输入域名即可访问github上的代码仓库\n\n');
+
+
+    writeArticleToLi('## github+域名实现个人博客\n\n','images/inner_picture01.jpg',' - 1.创建github账号\n\n - 2.创建代码仓库\n\n' +
+        '- 3.代码仓库命名为"用户名+github.io"\n\n - 4.购买域名，阿里云.top域名第一年只要1元钱\n\n  - 5.代码仓库创建CNAME文件，内容为域名，加不加www都可以\n\n - 6.解析域名，选择CNAME，主机记录为www，内容为"github用户名+github.io"\n\n - 7.打开浏览器，输入域名即可访问github上的代码仓库\n\n');
+
+
+    writeArticleToLi('## github+域名实现个人博客\n\n','images/inner_picture01.jpg',' - 1.创建github账号\n\n - 2.创建代码仓库\n\n' +
+        '- 3.代码仓库命名为"用户名+github.io"\n\n - 4.购买域名，阿里云.top域名第一年只要1元钱\n\n  - 5.代码仓库创建CNAME文件，内容为域名，加不加www都可以\n\n - 6.解析域名，选择CNAME，主机记录为www，内容为"github用户名+github.io"\n\n - 7.打开浏览器，输入域名即可访问github上的代码仓库\n\n');
+
+
+    writeArticleToLi('## github+域名实现个人博客\n\n','images/inner_picture01.jpg',' - 1.创建github账号\n\n - 2.创建代码仓库\n\n' +
+        '- 3.代码仓库命名为"用户名+github.io"\n\n - 4.购买域名，阿里云.top域名第一年只要1元钱\n\n  - 5.代码仓库创建CNAME文件，内容为域名，加不加www都可以\n\n - 6.解析域名，选择CNAME，主机记录为www，内容为"github用户名+github.io"\n\n - 7.打开浏览器，输入域名即可访问github上的代码仓库\n\n');
+
 }
 
-function writeArticleToLi() {
+function writeArticleToLi(title,imgN,artText) {
     var li = createLi();
     var leftLine = createLeftLine();
     li.appendChild(leftLine);
+    var titleDiv = createTitle(title);
+    li.appendChild(titleDiv);
+    var img = createPicture(imgN);
+    li.appendChild(img);
+    var artContent = createArtContent(artText);
+    li.appendChild(artContent);
+    var foot = createArtFoot();
+    li.appendChild(foot);
+}
+
+function createArtFoot() {
+    var foot = document.createElement('div');
+    foot.style.width = '100%';
+    foot.style.height = '80px';
+    foot.style.borderTop = '1px solid #cccccc';
+    foot.style.position = 'relative';
+
+    // 创建左侧标签模块
+    var artTag = document.createElement('div');
+    artTag.style.width = '70%';
+    artTag.style.height = '100%';
+    artTag.style.position = 'absolute';
+    artTag.style.top = '0';
+    artTag.style.left = '0';
+    foot.appendChild(artTag);
+
+    // 创建右侧展开全文按钮
+    var artFullTextBtn = document.createElement('a');
+    artFullTextBtn.style.cursor = 'pointer';
+    artFullTextBtn.style.display = 'block';
+    artFullTextBtn.innerText = '展开全文 >>';
+    artFullTextBtn.style.width = '80px';
+    artFullTextBtn.style.height = '25px';
+    artFullTextBtn.style.lineHeight = '25px';
+    artFullTextBtn.style.fontSize = '13px';
+    artFullTextBtn.style.color = 'white';
+    artFullTextBtn.style.backgroundColor = '#4d4d4d';
+    artFullTextBtn.style.borderRadius = '3px';
+    artFullTextBtn.style.textAlign = 'center';
+    artFullTextBtn.style.position = 'absolute';
+    artFullTextBtn.style.top = '50%';
+    artFullTextBtn.style.right = '0';
+    artFullTextBtn.style.transform = 'translateY(-50%)';
+    foot.appendChild(artFullTextBtn);
+
+    artFullTextBtn.onclick = function () {
+        alert('0')
+    }
+
+    return foot;
+}
+
+// 正文
+function createArtContent(artText) {
+    var div = document.createElement('div');
+    div.style.width = '100%';
+    div.style.height = '250px';
+    div.innerHTML = marked(artText);
+    div.style.marginTop = '30px';
+    return div;
+}
+
+// 创建第一张配图
+function createPicture(imaName) {
+    var img = document.createElement('img');
+    img.style.width = '400px';
+    img.style.height = '250px';
+    img.setAttribute('src',imaName);
+    img.style.marginTop = '20px';
+    return img;
+}
+
+// 创建标题
+function createTitle(title) {
+    var titleDiv = document.createElement('div');
+    titleDiv.innerHTML = marked(title);
+    return titleDiv;
 }
 
 // 创建文章左侧黑色竖线条
@@ -70,9 +183,9 @@ function createLeftLine() {
 function createLi() {
     var li = document.createElement('li');
     content_articles.appendChild(li);
-    li.style.backgroundColor = 'red';
+    li.style.backgroundColor = 'white';
     li.style.width = '100%';
-    li.style.height = '750px';
+    li.style.height = '765px';
     li.style.position = 'relative';
     li.style.marginTop = '30px';
     li.style.padding = '30px 60px 0px 60px';
