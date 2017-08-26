@@ -25,7 +25,6 @@ window.onload = function () {
         }
     }
     aboutBtn.onclick = function () {
-        // alert('0');
         // 显示左侧目录
         if (catalogueState == false){
             content.style.transform = 'translate(300px,0)';
@@ -36,7 +35,11 @@ window.onload = function () {
             content.style.transform = 'none';
             content.style.backgroundSize = '0px';
             catalogueState = false;
+            // content.style.animationDelay = '0.5s';
+            // content.style.animationName = 'hideContentBg';
+            // content.style.animationDuration = '0.1s';
         }
+
     }
 
     // 获取文章模块
@@ -50,12 +53,14 @@ window.onload = function () {
         '## github+域名实现个人博客\n\n',
         'images/inner_picture01.jpg',
         '- 1.创建github账号\n\n ' +
-        '- 2.创建代码仓库\n\n' +
-        '- 3.代码仓库命名为"用户名+github.io"\n\n ' +
+        '- 2.点击右上角新建代码仓库\n\n' +
+        '- 3.仓库命名为"你的用户名+github.io"\n\n ' +
         '- 4.购买域名，阿里云.top域名第一年只要1元钱\n\n  ' +
-        '- 5.代码仓库创建CNAME文件，内容为域名，加不加www都可以\n\n ' +
+        '- 5.github仓库创建CNAME文件，内容为域名，加不加www都可以\n\n ' +
         '- 6.解析域名，选择CNAME，主机记录为www，内容为"github用户名+github.io"\n\n ' +
-        '- 7.打开浏览器，输入域名即可访问github上的代码仓库\n\n',
+        '- 7.打开浏览器，输入域名即可访问github上的代码仓库\n\n' +
+        '- 8.本人使用仅会的html、css+js搭建个人网站，模仿的是litten.m\n\n' +
+        '- 9.也可以使用hexo，内有封装好的主题',
         new Array("博客","github","原创")
     );
 
@@ -148,6 +153,8 @@ function writeArticleToLi(title,imgN,artText,tags) {
     li.appendChild(img);
     var artContent = createArtContent(artText);
     li.appendChild(artContent);
+    var moreBtn = createMoreBtn();
+    li.appendChild(moreBtn);
     var foot = createArtFoot(tags);
     li.appendChild(foot);
 }
@@ -194,16 +201,16 @@ function createTag(tagN) {
 
     }
     // 绘制左侧小圆点
-    var circle = document.createElement('div');
-    circle.style.backgroundColor = 'red';
-    circle.style.width = '5px';
-    circle.style.height = '5px';
-    circle.style.borderRadius = '2.5px';
-    circle.style.position = 'absolute';
-    circle.style.top = '50%';
-    circle.style.left = '1px';
-    circle.style.transform = 'translateY(-50%)';
-    a.appendChild(circle);
+    // var circle = document.createElement('div');
+    // circle.style.backgroundColor = 'red';
+    // circle.style.width = '5px';
+    // circle.style.height = '5px';
+    // circle.style.borderRadius = '2.5px';
+    // circle.style.position = 'absolute';
+    // circle.style.top = '50%';
+    // circle.style.left = '1px';
+    // circle.style.transform = 'translateY(-50%)';
+    // a.appendChild(circle);
     a.innerText = tagN;
     return a;
 }
@@ -214,6 +221,7 @@ function createArtFoot(tags) {
     foot.style.height = '80px';
     foot.style.borderTop = '1px solid #cccccc';
     foot.style.position = 'relative';
+    foot.style.marginTop = '30px';
 
     // 创建左侧标签模块
     var artTag = document.createElement('div');
@@ -265,6 +273,16 @@ function createArtFoot(tags) {
     return foot;
 }
 
+// 查看更多按钮
+function createMoreBtn() {
+    var a = document.createElement('a');
+    a.innerText = 'more >>';
+    a.style.color = '#1d88ca';
+    // a.style.marginTop = '30px';
+    a.style.cursor = 'pointer';
+    return a;
+}
+
 // 正文
 function createArtContent(artText) {
     var div = document.createElement('div');
@@ -272,6 +290,13 @@ function createArtContent(artText) {
     div.style.height = '250px';
     div.innerHTML = marked(artText);
     div.style.marginTop = '30px';
+    // div.style.backgroundColor = 'purple';
+    div.style.overflow = 'hidden';
+    div.style.lineHeight = '25px';
+    // 不换行
+    // div.style.whiteSpace = 'nowrap';
+    // div.style.textOverflow = 'ellipsis';
+    // div.style.overflow = 'hidden';
     return div;
 }
 
@@ -309,10 +334,12 @@ function createLi() {
     var li = document.createElement('li');
     content_articles.appendChild(li);
     li.style.backgroundColor = 'white';
-    li.style.width = '100%';
-    li.style.height = '765px';
+    // li.style.width = '100%';
+    li.style.height = '820px';//765
     li.style.position = 'relative';
     li.style.marginTop = '30px';
+    li.style.marginLeft = '30px';
+    li.style.marginRight = '30px';
     li.style.padding = '30px 60px 0px 60px';
     li.style.boxSizing = 'border-box';
     li.style.overflow = 'hidden';
