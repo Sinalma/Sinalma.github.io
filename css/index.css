@@ -20,8 +20,6 @@ body{
     overflow-x:hidden
 }
 
-/*屏幕适配*/
-
 /*导航栏-起始位置为左侧*/
 .navi{
     width: 300px;
@@ -248,3 +246,84 @@ body{
     border-radius: 3px;
 }
 /*内容模块-右侧内容-相册模块*/
+
+
+
+/*屏幕适配*/
+@media screen and (max-width: 790px) {
+    .navi{
+        width: 100%;
+        height: 330px;
+        position: absolute;
+    }
+    .navi .navi_top{
+        width: 100%;
+        height: 100px;
+    }
+    .navi .navi_top .icon>img{
+        bottom: -40px;
+        transition-property: none;
+    }
+    .navi .navi_top .icon>img:hover{
+        transform: none;
+    }
+    .navi .navi_bottom{
+        height: 230px;
+        width: 100%;
+        padding-top: 50px;
+        background-color:#eaeaea;
+        box-shadow: 0 0 0 white;
+    }
+    .navi .navi_bottom .name{
+        margin: 0 auto;
+    }
+    .navi .navi_bottom .quotate_p{
+        margin-top: 15px;
+    }
+    .navi .navi_bottom .home_div{
+        display: inline-block;
+        width: 30%;
+        height: 25px;
+        line-height: 25px;
+        border: 1px solid #cccccc;
+        color: #959595;
+        border-radius: 5px;
+    }
+    .navi .navi_bottom .ablum_div{
+        display: inline-block;
+        width: 30%;
+        height: 25px;
+        line-height: 25px;
+        border: 1px solid #cccccc;
+        color: #959595;
+        margin-left: 0px;
+        margin-top: 65px;
+        border-radius: 5px;
+    }
+    .navi .navi_bottom .moreFunc{
+        opacity: 0;
+    }
+    .navi .navi_bottom .friendsLink{
+        margin-top: 0px;
+        transform: translateY(-150px);
+    }
+    .content .catalogue{
+        opacity: 0;
+    }
+    .content{
+        top:330px;
+        left:0;
+        /*overflow-y: auto;*/
+        /*overflow: auto;*/
+    }
+    .content .content_articles{
+        width: 100%;
+        margin-left: 0px;
+        margin-right: 0px;
+        /*overflow-y: hidden;*/
+        overflow-x: auto;
+    }
+    body{
+        overflow-y: auto;
+    }
+}

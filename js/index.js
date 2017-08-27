@@ -24,17 +24,21 @@ window.onload = function () {
             // catalogueState = false;
         }
     }
+    var content_articles = document.getElementById('content_articles');
     aboutBtn.onclick = function () {
         // 显示左侧目录
         if (catalogueState == false){
             content.style.transform = 'translate(300px,0)';
             content.style.backgroundSize = 'cover';
             catalogueState = true;
+            // content_articles.style.opacity = 0.5;
+
         } else {
             // 隐藏
             content.style.transform = 'none';
             content.style.backgroundSize = '0px';
             catalogueState = false;
+            // content_articles.style.opacity = 1;
             // content.style.animationDelay = '0.5s';
             // content.style.animationName = 'hideContentBg';
             // content.style.animationDuration = '0.1s';

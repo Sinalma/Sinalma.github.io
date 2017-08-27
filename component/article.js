@@ -163,6 +163,8 @@ function createLi() {
     li.style.padding = '30px 60px 0px 60px';
     li.style.boxSizing = 'border-box';
     li.style.overflow = 'hidden';
+    li.style.borderTop = '1px solid white';
+    li.style.borderBottom = '1px solid white';
     return li;
 }
 
