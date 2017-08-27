@@ -15,9 +15,9 @@ html{
 }
 body{
     background-color: #eaeaea;
-    height: 100%;
+    /*height: 100%;*/
     /*隐藏水平方向滚动条*/
-    overflow-x:hidden
+    overflow-x:hidden;
 }
 
 /*导航栏-起始位置为左侧*/
@@ -138,12 +138,13 @@ body{
 /*内容模块布局*/
 .content{
     height: 100%;
+    /*height: 7000px;*/
     width: 100%;
     position: absolute;
     background-size: 0;
     transition: transform 0.5s ease-in-out 0s,backgroundSize 0.5s ease-in-out 1.5s;
     background-image: url("../images/bg1.jpg");
-    overflow-y:hidden;
+    overflow-y:auto;
 }
 /*内容模块-左侧目录*/
 .content .catalogue{
@@ -315,15 +316,14 @@ body{
         left:0;
         /*overflow-y: auto;*/
         /*overflow: auto;*/
+        /*overflow-y: scroll;*/
     }
     .content .content_articles{
         width: 100%;
         margin-left: 0px;
         margin-right: 0px;
-        /*overflow-y: hidden;*/
-        overflow-x: auto;
-    }
-    body{
-        overflow-y: auto;
+        overflow-y: hidden;
+        /*overflow-x: auto;*/
+        overflow-y: scroll;
     }
 }
