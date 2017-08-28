@@ -124,6 +124,7 @@ function createArtContent(artText) {
 function createPicture(imaName) {
     var img = document.createElement('img');
     img.style.width = '400px';
+    // img.style.width = '100%';
     img.style.height = '250px';
     img.setAttribute('src',imaName);
     img.style.marginTop = '20px';

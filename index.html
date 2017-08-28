@@ -12,47 +12,54 @@
         <script src="marked-master/lib/marked.js"></script>
     </head>
     <body>
-    <div class="navi" id="navi">
+    <div class="container">
+
         <!--导航栏-->
-        <div class="navi_top" id="navi_top">
-            <a href="#" class="icon"><img src="images/icon.jpg" alt=""></a>
-        </div>
-        <div class="navi_bottom" id="navi_bottom">
-            <h4 class="name">Sin alma</h4>
-            <p class="quotate_p">Stay simple,stay navie.</p>
-            <div class="home_div"><a href="">主页</a></div>
-            <div class="ablum_div"><a href="">相册</a></div>
-            <div class="moreFunc">
-                <!--<button class="articles_btn">所有文章</button>-->
-                <a class="articles_btn">所有文章</a>
-                /
-                <!--<button class="abountMe_btn" id="abountMe_btn">关于我</button>-->
-                <a class="abountMe_btn" id="abountMe_btn">关于我</a>
+        <div class="navi" id="navi">
+            <div class="navi_top" id="navi_top">
+                <a href="#" class="navi_menu" id="navi_menu"><img src="images/icon_menu.png" alt=""></a>
+                <a href="#" class="icon"><img src="images/icon.jpg" alt=""></a>
             </div>
-            <div class="friendsLink">
-                <a href="https://github.com/Sinalma" class="github" target="_blank"><img src="images/github.png" alt=""></a>
-                <a href="http://weibo.com/2430481133" class="weibo" target="_blank"><img src="images/weibo.png" alt=""></a>
-                <a href="https://www.zhihu.com/people/sinalma" class="zhihu" target="_blank"><img src="images/zhihu.png" alt=""></a>
+            <div class="navi_bottom" id="navi_bottom">
+                <h4 class="name">Sin alma</h4>
+                <p class="quotate_p">Stay simple,stay navie.</p>
+                <div class="home_div"><a href="">主页</a></div>
+                <div class="ablum_div"><a href="">相册</a></div>
+                <div class="moreFunc">
+                    <!--<button class="articles_btn">所有文章</button>-->
+                    <a class="articles_btn">所有文章</a>
+                    /
+                    <!--<button class="abountMe_btn" id="abountMe_btn">关于我</button>-->
+                    <a class="abountMe_btn" id="abountMe_btn">关于我</a>
+                </div>
+                <div class="friendsLink">
+                    <a href="https://github.com/Sinalma" class="github" target="_blank"><img src="images/github.png" alt=""></a>
+                    <a href="http://weibo.com/2430481133" class="weibo" target="_blank"><img src="images/weibo.png" alt=""></a>
+                    <a href="https://www.zhihu.com/people/sinalma" class="zhihu" target="_blank"><img src="images/zhihu.png" alt=""></a>
+                </div>
             </div>
         </div>
+
+
+    <!--小盒子工具模块-->
+    <div class="tools" id="tools">
+        <ul class="introduction">
+            <li>Sin alma</li>
+            <li>年少时想做厨师</li>
+            <li>奈何学了医</li>
+            <li>目前潜心搞编程</li>
+            <li>准备投身金融行业</li>
+            <li>梦想成为一名VC</li>
+            <li>热爱生活</li>
+            <li>立志做个优秀的人</li>
+            <li>下辈子做只高贵的鸭</li>
+        </ul>
+        <ul class="menu"></ul>
     </div>
 
     <!--内容模块-->
     <div class="content" id="content">
-        <div class="catalogue">
-            <ul class="introduction">
-                <li>Sin alma</li>
-                <li>少时愿为厨</li>
-                <li>毕业于医学院</li>
-                <li>目前潜心搞编程</li>
-                <li>准备投身金融行业</li>
-                <li>梦想成为一名VC</li>
-                <li>热爱生活</li>
-                <li>立志做一个优秀的人</li>
-                <li>将来做一只高贵的鸭</li>
-            </ul>
-            <ul class="menu"></ul>
-        </div>
+
         <ul class="content_articles" id="content_articles">
             <li>
                 <div class="leftLine"></div>
@@ -66,6 +73,8 @@
             </li>
         </ul>
         <ul class="content_ablum"></ul>
+    </div>
+
     </div>
     </body>
 </html>

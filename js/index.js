@@ -11,39 +11,51 @@ window.onload = function () {
     // 内容模块
     var content = $('content');
     // 导航栏
+    var navi = $('navi');
     var navi_top = $('navi_top');
     var navi_bottom = $('navi_bottom');
+    var tools = $('tools');
     // 左侧目录显示状态
-    var catalogueState = false;
+    var isShowTools = false;
     navi_top.onclick = function () {
         content.style.transform = 'none';
     }
     navi_bottom.onclick = function () {
         if (catalogueState == true){
             // content.style.transform = 'none';
-            // catalogueState = false;
+            // isShowTools = false;
         }
     }
     var content_articles = document.getElementById('content_articles');
     aboutBtn.onclick = function () {
         // 显示左侧目录
-        if (catalogueState == false){
+        if (isShowTools == false){
             content.style.transform = 'translate(300px,0)';
-            content.style.backgroundSize = 'cover';
-            catalogueState = true;
-            // content_articles.style.opacity = 0.5;
-
+            tools.style.transform = 'translate(300px,0)';
+            content_articles.style.opacity = 0.5;
+            content.style.backgroundColor = 'transparent';
+            isShowTools = true;
         } else {
             // 隐藏
+            tools.style.transform = 'none';
             content.style.transform = 'none';
-            content.style.backgroundSize = '0px';
-            catalogueState = false;
-            // content_articles.style.opacity = 1;
-            // content.style.animationDelay = '0.5s';
-            // content.style.animationName = 'hideContentBg';
-            // content.style.animationDuration = '0.1s';
+            content_articles.style.opacity = 1;
+            content.style.backgroundColor = '#eaeaea';
+            isShowTools = false;
+
         }
 
+    }
+
+    // 获取导航栏菜单
+    var navi_menu = document.getElementById('navi_menu');
+    var catalogue = document.getElementById('catalogue');
+    navi_menu.onclick = function () {
+        // catalogue.style.transform = 'none';
+        // catalogue.style.opacity = '1';
+        content.style.transform = 'translate(300px,0)';
+        // content.style.backgroundSize = 'cover';
+        isShowTools = true;
     }
 
     // 获取文章模块
@@ -52,6 +64,17 @@ window.onload = function () {
     // children所有直接子元素
     writeArticle(0,'## github+域名实现个人博客\n\n','images/article_01',' - 1.创建github账号\n\n - 2.创建代码仓库\n\n' +
         '- 3.代码仓库命名为"用户名+github.io"\n\n - 4.购买域名，阿里云.top域名第一年只要1元钱\n\n  - 5.代码仓库创建CNAME文件，内容为域名，加不加www都可以\n\n - 6.解析域名，选择CNAME，主机记录为www，内容为"github用户名+github.io"\n\n - 7.打开浏览器，输入域名即可访问github上的代码仓库\n\n');
+
+    writeArticleToLi(
+        '## 大家好\n\n',
+        'images/inner_picture01.jpg',
+        '- 1.sinalma.top\n\n ' +
+        '- 2.这是我的个人博客\n\n' +
+        '- 3.可能打开的速度有点慢\n\n ' +
+        '- 4.但是以后会不定期的发一些小视频\n\n' +
+        '- 5.请加个书签吧',
+        new Array("博客","刺激","有点man")
+    );
 
     writeArticleToLi(
         '## github+域名实现个人博客\n\n',

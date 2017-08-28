@@ -14,27 +14,31 @@ html{
     height: 100%;
 }
 body{
-    background-color: #eaeaea;
-    /*height: 100%;*/
+    height: 100%;
     /*隐藏水平方向滚动条*/
-    overflow-x:hidden;
+    /*overflow-x:hidden;*/
+    /*position: relative;*/
+    /*overflow-y: auto;*/
+}
+
+/*最外层容器*/
+.container{
+    background: url("../images/bg1.jpg") no-repeat center top;
+    background-size: cover;
+    height: 100%;
+    width: 100%;
 }
 
 /*导航栏-起始位置为左侧*/
 .navi{
     width: 300px;
     height: 100%;
-    background-color: white;
-    /*background-color: purple;*/
-    /*float: left;*/
     text-align: center;
     position: fixed;
     left: 0;
     top:0;
-    /*添加右侧阴影*/
-    box-shadow: 1px 1px 15px white;
-    /*opacity: 0;*/
     z-index: 1000;
+    transition: all 0.2s ease-in-out 0s;
 }
 .navi .navi_top{
     width: 100%;
@@ -58,18 +62,26 @@ body{
 .navi .navi_top .icon img:hover{
     transform: scale(2,2) rotate(90deg);
 }
+.navi .navi_top .navi_menu{
+    opacity: 0;
+}
+.navi .navi_top .navi_menu img{
+    width: 22px;
+    height: 22px;
+    position: absolute;
+    left: 10px;
+    top: 10px;
+}
 .navi .navi_bottom{
     background-color: #ffffff;
     width: 100%;
     height: 90%;
     padding-top: 90px;
     box-sizing: border-box;
-    /*>>>>>>>>>>>>>>>>>>>*/
     pointer-events:none;
 }
 .navi .navi_bottom .name{
     font-size: 27px;
-    /*margin-top: 90px;*/
     color: #929292;
 }
 .navi .navi_bottom .quotate_p{
@@ -78,8 +90,6 @@ body{
 }
 .navi .navi_bottom div{
     color: #696969;
-    /*border: 0px;*/
-    /*background-color: white;*/
 }
 .navi .navi_bottom button{
      color: #696969;
@@ -135,44 +145,44 @@ body{
     transform: scale(1.2,1.2);
 }
 
-/*内容模块布局*/
-.content{
+
+/*工具模块*/
+.tools{
+    width: 300px;
     height: 100%;
-    /*height: 7000px;*/
-    width: 100%;
-    position: absolute;
-    background-size: 0;
-    transition: transform 0.5s ease-in-out 0s,backgroundSize 0.5s ease-in-out 1.5s;
-    background-image: url("../images/bg1.jpg");
-    overflow-y:auto;
+    position: relative;
+    float: left;
+    transition: transform 0.5s ease-in-out 0s;
 }
-/*内容模块-左侧目录*/
-.content .catalogue{
-    width: 330px; /*360*/
-    height: 100%;
-    position: absolute;
-    left: 0;
-    top:0;
-}
-.content .catalogue .introduction{
+.tools .introduction{
     text-align: center;
-    margin: 0 auto;
     color: white;
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%,-50%);
 }
-.content .catalogue .introduction>li{
+.tools .introduction>li{
     margin-bottom: 10px;
 }
-.content .catalogue .introduction>li:first-child{
+.tools .introduction>li:first-child{
     font-size: 22px;
+    margin-bottom: 20px;
+}
+.tools .introduction>li:nth-child(7){
+    margin-top: 20px;
+}
+
+/*内容模块布局*/
+.content{
+    height: 100%;
+    margin-left: 300px;//330
+    margin-right: 30px;
+    transition: transform 0.5s ease-in-out 0s;
+    background-color: #eaeaea;
 }
 /*内容模块-右侧内容-文章模块*/
 .content .content_articles{
-    margin-left: 300px;//330
-    margin-right: 30px;
     height: 100%;
     overflow-y:auto;
     overflow-x: hidden;
@@ -268,6 +278,9 @@ body{
     .navi .navi_top .icon>img:hover{
         transform: none;
     }
+    .navi .navi_top .navi_menu{
+        opacity: 1;
+    }
     .navi .navi_bottom{
         height: 230px;
         width: 100%;
@@ -308,22 +321,24 @@ body{
         margin-top: 0px;
         transform: translateY(-150px);
     }
-    .content .catalogue{
-        opacity: 0;
+    .tools{
+        /*z-index: 1000;*/
+        background-color: #b6cbc6;
+        /*transform: translateX(-300px);*/
+        float: none;
+        position: absolute;
+        left: -600px;
+        top:0;
     }
     .content{
+        width: 100%;
+        position: absolute;
         top:330px;
-        left:0;
-        /*overflow-y: auto;*/
-        /*overflow: auto;*/
-        /*overflow-y: scroll;*/
+        left: -300px;
+        /*transform: translateX(-300px);*/
+        height: 7900px;
     }
     .content .content_articles{
-        width: 100%;
-        margin-left: 0px;
-        margin-right: 0px;
-        overflow-y: hidden;
-        /*overflow-x: auto;*/
-        overflow-y: scroll;
     }
+
 }

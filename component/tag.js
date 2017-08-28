@@ -17,6 +17,13 @@
     // }
 // }
 
+/**
+ * @method 同时创建多个文章标签
+ * @description 实现细节 : 一个div为父元素，内有一个利用border实现的三角，和利用radius实现的圆点，
+ * 文字利用a标签包裹，不设置宽度，并padding向右移动
+ * @param tags 存放标签名称的数组
+ * @param superV 显示标签的父元素
+ */
 function createTags(tags,superV) {
     for (var i=0;i<tags.length;i++){
         var tag = createTag(tags[i]);
@@ -25,7 +32,6 @@ function createTags(tags,superV) {
         superV.appendChild(tag);
     }
 }
-
 
 function createTag(name){
     var tag = document.createElement('div');
