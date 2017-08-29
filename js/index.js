@@ -46,7 +46,36 @@ window.onload = function () {
         }
 
     }
-
+    window.onresize = function(){
+        if (document.documentElement.clientWidth <= 790 && isShowTools == true){
+            navi.style.transform = 'translate(300px,0)';
+            content.style.backgroundColor = '#eaeaea';
+            // content_articles.style.backgroundColor = 'transparent';
+            content_articles.style.opacity = 1;
+            tools.style.position = 'fixed';
+        }else if(document.documentElement.clientWidth > 790 && isShowTools == true){
+            navi.style.transform = 'none';
+            content.style.backgroundColor = 'transparent';
+            content_articles.style.opacity = 0.5;
+        }
+        if (document.documentElement.clientWidth <= 790 ) {
+            for (var i=0;i<content_articles.children.length;i++){
+                var li = content_articles.children[i];
+                li.style.marginLeft = '0';
+                li.style.marginRight = '0';
+                li.style.marginBottom = '10px';
+                li.style.padding = '10px 10px 0px 10px';
+            }
+        }else {
+            for (var i=0;i<content_articles.children.length;i++){
+                var li = content_articles.children[i];
+                li.style.marginTop = '30px';
+                li.style.marginLeft = '30px';
+                li.style.marginRight = '30px';
+                li.style.padding = '30px 60px 0px 60px';
+            }
+        }
+    }
     // 获取导航栏菜单
     var navi_menu = document.getElementById('navi_menu');
     var catalogue = document.getElementById('catalogue');
@@ -62,19 +91,6 @@ window.onload = function () {
     var content_articles = $('content_articles');
     // childNodes所有子元素
     // children所有直接子元素
-    writeArticle(0,'## github+域名实现个人博客\n\n','images/article_01',' - 1.创建github账号\n\n - 2.创建代码仓库\n\n' +
-        '- 3.代码仓库命名为"用户名+github.io"\n\n - 4.购买域名，阿里云.top域名第一年只要1元钱\n\n  - 5.代码仓库创建CNAME文件，内容为域名，加不加www都可以\n\n - 6.解析域名，选择CNAME，主机记录为www，内容为"github用户名+github.io"\n\n - 7.打开浏览器，输入域名即可访问github上的代码仓库\n\n');
-
-    writeArticleToLi(
-        '## 大家好\n\n',
-        'images/inner_picture01.jpg',
-        '- 1.sinalma.top\n\n ' +
-        '- 2.这是我的个人博客\n\n' +
-        '- 3.可能打开的速度有点慢\n\n ' +
-        '- 4.但是以后会不定期的发一些小视频\n\n' +
-        '- 5.请加个书签吧',
-        new Array("博客","刺激","有点man")
-    );
 
     writeArticleToLi(
         '## github+域名实现个人博客\n\n',

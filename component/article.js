@@ -45,6 +45,7 @@ function createArtFoot(tags) {
     foot.style.borderTop = '1px solid #cccccc';
     foot.style.position = 'relative';
     foot.style.marginTop = '30px';
+    // foot.style.backgroundColor = 'red';
 
     // 创建左侧标签模块
     var artTag = document.createElement('div');
@@ -100,6 +101,8 @@ function createMoreBtn() {
     a.innerText = 'more >>';
     a.style.color = '#1d88ca';
     a.style.cursor = 'pointer';
+    a.style.fontSize = '22px';
+    a.style.marginTop = '30px';
     return a;
 }
 
@@ -108,8 +111,10 @@ function createArtContent(artText) {
     var div = document.createElement('div');
     div.style.width = '100%';
     div.style.height = '250px';
+    div.style.fontSize = '17px';
     div.innerHTML = marked(artText);
     div.style.marginTop = '30px';
+    div.style.marginBottom = '30px';
     // div.style.backgroundColor = 'purple';
     div.style.overflow = 'hidden';
     div.style.lineHeight = '25px';
@@ -127,7 +132,7 @@ function createPicture(imaName) {
     // img.style.width = '100%';
     img.style.height = '250px';
     img.setAttribute('src',imaName);
-    img.style.marginTop = '20px';
+    img.style.marginTop = '30px';
     return img;
 }
 
@@ -135,6 +140,7 @@ function createPicture(imaName) {
 function createTitle(title) {
     var titleDiv = document.createElement('div');
     titleDiv.innerHTML = marked(title);
+    titleDiv.style.color = '#69697f';
     return titleDiv;
 }
 
@@ -156,7 +162,7 @@ function createLi() {
     content_articles.appendChild(li);
     li.style.backgroundColor = 'white';
     // li.style.width = '100%';
-    li.style.height = '820px';//765
+    li.style.height = '800px';//765
     li.style.position = 'relative';
     li.style.marginTop = '30px';
     li.style.marginLeft = '30px';
@@ -166,6 +172,9 @@ function createLi() {
     li.style.overflow = 'hidden';
     li.style.borderTop = '1px solid white';
     li.style.borderBottom = '1px solid white';
+    li.style.fontSize = '17px';
+    li.style.color = '#69697f';
+    // li.style.backgroundColor = 'red';
     return li;
 }
 
