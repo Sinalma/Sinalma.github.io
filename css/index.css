@@ -21,6 +21,19 @@ body{
     /*overflow-y: auto;*/
 }
 
+/*蒙版*/
+.hud{
+    background-color: black;
+    opacity: 0.2;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top:0;
+    left:0;
+    z-index: 1100;
+    display: none;
+}
+
 /*最外层容器*/
 .container{
     background: url("../images/bg1.jpg") no-repeat center top;
@@ -38,7 +51,7 @@ body{
     left: 0;
     top:0;
     z-index: 1000;
-    transition: all 0.2s ease-in-out 0s;
+    transition: all 0.5s ease-in-out 0s;
 }
 .navi .navi_top{
     width: 100%;
@@ -64,13 +77,13 @@ body{
 }
 .navi .navi_top .navi_menu{
     opacity: 0;
+    position: absolute;
+    left: 10px;
+    top: 10px;
 }
 .navi .navi_top .navi_menu img{
     width: 22px;
     height: 22px;
-    position: absolute;
-    left: 10px;
-    top: 10px;
 }
 .navi .navi_bottom{
     background-color: #ffffff;
@@ -153,6 +166,8 @@ body{
     position: relative;
     float: left;
     transition: transform 0.5s ease-in-out 0s;
+    /*transition: all 0.5s ease-in-out 0s;*/
+    box-shadow: 1px 1px 5px black;
 }
 .tools .introduction{
     text-align: center;
@@ -166,7 +181,7 @@ body{
     margin-bottom: 10px;
 }
 .tools .introduction>li:first-child{
-    font-size: 22px;
+    font-size: 23px;
     margin-bottom: 20px;
 }
 .tools .introduction>li:nth-child(7){
@@ -176,6 +191,7 @@ body{
 /*内容模块布局*/
 .content{
     height: 100%;
+    /*height: 7000px;*/
     margin-left: 300px;//330
     margin-right: 30px;
     transition: transform 0.5s ease-in-out 0s;
@@ -184,9 +200,42 @@ body{
 /*内容模块-右侧内容-文章模块*/
 .content .content_articles{
     height: 100%;
+    /*height: 7000px;*/
     overflow-y:auto;
     overflow-x: hidden;
 }
+
+/*内容模块底部工具栏*/
+.backTopBtn{
+    background: url("../images/toparrow.png") no-repeat center center;
+    /*background-color: #d6d6d6;*/
+    background-color: #929292;
+    opacity: 0.5;
+    width: 40px;
+    height: 40px;
+    font-size: 40px;
+    text-align: center;
+    line-height: 40px;
+    position: fixed;
+    right:30px;
+    bottom:50px;
+    color: white;
+    font-weight: bolder;
+    cursor: pointer;
+}
+.backTopBtn:hover{
+    background-color: #67cdf1;
+    opacity: 1;
+}
+
+/*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
+/*底部模块*/
+.footer {
+    background-color: #eaeaea;
+    width: 100%;
+    /*height: 150px;*/
+}
+
 /*每个文章*/
 /*.content .content_articles>li{*/
     /*background-color: white;*/
@@ -266,6 +315,7 @@ body{
         width: 100%;
         height: 330px;
         position: absolute;
+        /*box-shadow: none;*/
     }
     .navi .navi_top{
         width: 100%;
@@ -323,7 +373,8 @@ body{
     }
     .tools{
         /*z-index: 1000;*/
-        background-color: #b6cbc6;
+        /*background-color: #b6cbc6;*/
+        background: url("../images/bg1.jpg") no-repeat center top;
         /*transform: none;*/
         /*transform: translateX(-300px);*/
         float: none;
@@ -334,7 +385,7 @@ body{
     .content{
         width: 100%;
         position: absolute;
-        top:300px;
+        top:330px;
         left: -300px;
         /*transform: none;*/
         /*transform: translateX(-300px);*/

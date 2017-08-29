@@ -23,6 +23,27 @@ function writeArticleToLi(title,imgN,artText,tags) {
     li.appendChild(moreBtn);
     var foot = createArtFoot(tags);
     li.appendChild(foot);
+
+    // 获取当前屏幕宽度
+    if (document.documentElement.clientWidth <= 790){
+        leftLine.style.display = 'none';
+        li.style.marginLeft = '0';
+        li.style.marginRight = '0';
+        li.style.marginBottom = '10px';
+        li.style.marginTop = '0px';
+        li.style.padding = '10px 10px 0px 10px';
+        li.style.height = '770px';
+        li.style.fontSize = '14px';
+    }else {
+        leftLine.style.display = 'block';
+        li.style.marginTop = '30px';
+        li.style.marginLeft = '30px';
+        li.style.marginRight = '30px';
+        li.style.marginBottom = '0px';
+        li.style.padding = '30px 60px 0px 60px';
+        li.style.height = '800px';
+        li.style.fontSize = '17px';
+    }
 }
 
 // 创建标签模块中的标签图标
@@ -153,6 +174,7 @@ function createLeftLine() {
     leftLine.style.left = '0';
     leftLine.style.top = '0';
     leftLine.style.backgroundColor = 'black';
+    leftLine.className = 'article_leftLine';
     return leftLine;
 }
 
