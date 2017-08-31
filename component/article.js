@@ -206,6 +206,7 @@ function createLi() {
  * @method : 创建单个标签，不包含小圆点
  * @description : 不推荐使用，接口已改，导入tag.js,调用createTags方法创建多个标签
  * @param tagN : 标签内的文字
+ * @return a tag标签
  */
 // function createTag(tagN) {
 //     var a = document.createElement('a');

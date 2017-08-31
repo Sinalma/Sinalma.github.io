@@ -33,6 +33,11 @@ function createTags(tags,superV) {
     }
 }
 
+/**
+ * @method 创建单个标签
+ * @param name 标签名称
+ * @return {Element} 自定义的标签元素
+ */
 function createTag(name){
     var tag = document.createElement('div');
     tag.style.backgroundColor = '#b98f6e';
@@ -55,13 +60,14 @@ function createTag(name){
     tag.style.cursor = 'pointer';
     tag.onmouseover = function () {
         tag.style.opacity = '0.7';
-
     }
     tag.onmouseout = function () {
         tag.style.opacity = '1';
-
     }
-
+    tag.onclick = function () {
+        var searchBar = $('tools_search');
+        searchBar.value = "#"+tag.textContent;
+    }
     return tag;
 }
 

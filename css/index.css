@@ -18,7 +18,8 @@ body{
     /*隐藏水平方向滚动条*/
     /*overflow-x:hidden;*/
     /*position: relative;*/
-    /*overflow-y: auto;*/
+    overflow-y: auto;
+    overflow-x: hidden;
 }
 
 /*蒙版*/
@@ -158,7 +159,6 @@ body{
     transform: scale(1.2,1.2);
 }
 
-
 /*工具模块*/
 .tools{
     width: 300px;
@@ -170,6 +170,7 @@ body{
     box-shadow: 1px 1px 5px black;
 }
 .tools .introduction{
+    opacity: 0;
     text-align: center;
     color: white;
     position: absolute;
@@ -184,8 +185,87 @@ body{
     font-size: 23px;
     margin-bottom: 20px;
 }
-.tools .introduction>li:nth-child(7){
+.tools .introduction>li:nth-child(6){
     margin-top: 20px;
+}
+/*工具栏所有文章模块*/
+.tools .allArticles{
+    width: 330px;
+    /*height: 100%;*/
+    padding-top: 20px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+.tools .allArticles>input{
+    border: 0;
+    outline: none;
+}
+.tools .allArticles>input[type=search]{
+    display: inline-block;
+    width: 280px;
+    height: 30px;
+    color: white;
+    font-size: 14px;
+    margin-top: 20px;
+    background-color: transparent;
+    border: none;
+    border-bottom: 3px solid white;
+}
+/*是否显示标签栏的按钮外层*/
+.tools .allArticles .tools_showTags_div{
+    width: 100%;
+    height: 18px;
+    margin-top: 15px;
+}
+/*是否显示标签栏的按钮内层*/
+.tools .allArticles .tools_isShowTags{
+    position: absolute;
+    right: 10px;
+    color: white;
+    font-size: 14px;
+}
+/*是否显示标签栏的按钮内层*/
+.tools .allArticles .tools_isShowTags>button{
+    background: url("../images/icon_slider_off.png");
+    width: 32px;
+    height: 18px;
+    outline: none;
+    border: 0;
+    cursor: pointer;
+    float: right;
+}
+/*标签栏*/
+.tools .allArticles>.tools_tags{
+    margin-top: 15px;
+    background-color: rgba(255, 255, 255, 0.31);
+    margin-right: 20px;
+    /*height: 200px;*/
+    padding: 10px;
+
+}
+/*所有文章缩略的清单*/
+.tools .allArticles>.tools_art_list{
+    background-color: rgba(255, 255, 255, 0.31);
+    margin-top: 15px;
+    margin-right: 20px;
+    height: 300px;
+}
+/*工具栏中<=790px时显示的选择条*/
+.tools .tools_selectbar{
+    background-color: red;
+    width: 210px;
+    height: 25px;
+    color: white;
+    position: fixed;
+    left: 50%;
+    top:50px;
+    transform: translateX(-50%);
+}
+.tools .tools_selectbar>a{
+    background-color: white;
+    color: white;
+    width: 105px;
+    height: 100%;
 }
 
 /*内容模块布局*/
@@ -196,6 +276,7 @@ body{
     margin-right: 30px;
     transition: transform 0.5s ease-in-out 0s;
     background-color: #eaeaea;
+    position: relative;
 }
 /*内容模块-右侧内容-文章模块*/
 .content .content_articles{
@@ -203,12 +284,21 @@ body{
     /*height: 7000px;*/
     overflow-y:auto;
     overflow-x: hidden;
+    /*opacity: 0;*/
+}
+/*内容模块-右侧内容-相册模块*/
+.content .content_ablum{
+    /*background-color: red;*/
+    /*width: 100%;*/
+    /*height: 100%;*/
+    /*overflow-y: auto;*/
+    /*overflow-x: hidden;*/
+    /*opacity: 1;*/
 }
 
 /*内容模块底部工具栏*/
 .backTopBtn{
     background: url("../images/toparrow.png") no-repeat center center;
-    /*background-color: #d6d6d6;*/
     background-color: #929292;
     opacity: 0.5;
     width: 40px;
@@ -305,7 +395,6 @@ body{
     /*transform: translateY(-50%);*/
     /*border-radius: 3px;*/
 /*}*/
-/*内容模块-右侧内容-相册模块*/
 
 
 

@@ -29,7 +29,7 @@
                 <div class="ablum_div"><a href="">相册</a></div>
                 <div class="moreFunc">
                     <!--<button class="articles_btn">所有文章</button>-->
-                    <a class="articles_btn">所有文章</a>
+                    <a class="articles_btn" id="articles_btn">所有文章</a>
                     /
                     <!--<button class="abountMe_btn" id="abountMe_btn">关于我</button>-->
                     <a class="abountMe_btn" id="abountMe_btn">关于我</a>
@@ -45,10 +45,13 @@
 
     <!--小盒子工具模块-->
     <div class="tools" id="tools">
-        <ul class="introduction">
+        <!--<div class="tools_selectBar">-->
+            <!--<a href="" class="tools_all_art_btn">所有文章</a>-->
+            <!--<a href="" class="tools_about_me_btn">关于我</a>-->
+        <!--</div>-->
+        <ul class="introduction" id="introduction">
             <li>Sin alma</li>
-            <li>年少时想做厨师</li>
-            <li>奈何学了医</li>
+            <li>毕业于医学院</li>
             <li>目前潜心搞编程</li>
             <li>准备投身金融行业</li>
             <li>梦想成为一名VC</li>
@@ -56,7 +59,17 @@
             <li>立志做个优秀的人</li>
             <li>下辈子做只高贵的鸭</li>
         </ul>
-        <ul class="allArticles"></ul>
+        <ul class="allArticles" id="allArticles">
+            <input type="search" class="tools_search" id="tools_search" value="js">
+            <div class="tools_showTags_div">
+            <div class="tools_isShowTags">
+                tag:
+            <button class="tools_isShowTags_btn" id="tools_isShowTags_btn"></button>
+            </div>
+            </div>
+            <div class="tools_tags" id="tools_tags"></div>
+            <ul class="tools_art_list"></ul>
+        </ul>
     </div>
 
     <!--内容模块-->
@@ -66,7 +79,12 @@
 
         </ul>
         <!--相册模块-->
-        <ul class="content_ablum"></ul>
+        <ul class="content_ablum">
+            <!--&lt;!&ndash; UY BEGIN &ndash;&gt;-->
+            <!--<div id="uyan_frame"></div>-->
+            <!--<script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js"></script>-->
+            <!--&lt;!&ndash; UY END &ndash;&gt;-->
+        </ul>
         <!--返回顶部按钮-->
         <a href="" onclick="pageScroll()" class="backTopBtn"></a>
         <!--底部模块-->
