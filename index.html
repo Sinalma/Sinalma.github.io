@@ -1,13 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
+        <!--移动端浏览器支持-->
         <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=0.5, maximum-scale=2.0, user-scalable=yes" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="format-detection" content="telephone=no" />
+
         <meta charset="UTF-8">
             <title>Personal Page</title>
         <link rel="stylesheet" href="css/index.css">
-        <!-- 引入组件tag.js-->
+        <!-- 引入自定义组件组件-->
         <script src="component/tag.js"></script>
         <script src="component/article.js"></script>
         <script type="text/javascript" src="js/index.js"></script>
@@ -25,8 +27,8 @@
             <div class="navi_bottom" id="navi_bottom">
                 <h4 class="name">Sin alma</h4>
                 <p class="quotate_p">Stay simple,stay navie.</p>
-                <div class="home_div"><a href="">主页</a></div>
-                <div class="ablum_div"><a href="">相册</a></div>
+                <div class="home_div"><a id="navi_home_a">主页</a></div>
+                <div class="ablum_div"><a id="navi_ablum_a">相册</a></div>
                 <div class="moreFunc">
                     <!--<button class="articles_btn">所有文章</button>-->
                     <a class="articles_btn" id="articles_btn">所有文章</a>
@@ -45,10 +47,16 @@
 
     <!--小盒子工具模块-->
     <div class="tools" id="tools">
-        <!--<div class="tools_selectBar">-->
-            <!--<a href="" class="tools_all_art_btn">所有文章</a>-->
-            <!--<a href="" class="tools_about_me_btn">关于我</a>-->
-        <!--</div>-->
+        <!--浏览器宽度<=790px时显示-->
+        <div class="tools_selectBar">
+            <!--
+             class="tools_all_art_btn"
+             class="tools_about_me_btn"
+             -->
+            <a>所有文章</a>
+            <a>关于我</a>
+        </div>
+        <!--关于我-->
         <ul class="introduction" id="introduction">
             <li>Sin alma</li>
             <li>毕业于医学院</li>
@@ -59,8 +67,9 @@
             <li>立志做个优秀的人</li>
             <li>下辈子做只高贵的鸭</li>
         </ul>
+        <!--所有文章缩略清单-->
         <ul class="allArticles" id="allArticles">
-            <input type="search" class="tools_search" id="tools_search" value="js">
+            <input type="search" class="tools_search" id="tools_search" placeholder="find somethings..." value="">
             <div class="tools_showTags_div">
             <div class="tools_isShowTags">
                 tag:
@@ -70,7 +79,7 @@
             <div class="tools_tags" id="tools_tags"></div>
             <ul class="tools_art_list"></ul>
         </ul>
-    </div>
+    </div><!--小盒子工具模块-->
 
     <!--内容模块-->
     <div class="content" id="content">
@@ -79,19 +88,35 @@
 
         </ul>
         <!--相册模块-->
-        <ul class="content_ablum">
-            <!--&lt;!&ndash; UY BEGIN &ndash;&gt;-->
-            <!--<div id="uyan_frame"></div>-->
-            <!--<script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js"></script>-->
-            <!--&lt;!&ndash; UY END &ndash;&gt;-->
+        <ul class="content_ablum" id="content_ablum">
+            <li class="content_ablum_navi">
+                <div class="ablum_lfet_line"></div>
+                <h1>相册</h1>
+                <div class="ablum_menu">
+                    <a class="ablum_menu_photo">照片</a>
+                    <a class="ablum_menu_video">视频</a>
+                </div>
+                <div class="photo_li">
+                    <img src="images/icon.jpg">
+                </div>
+                <!--友言支持-->
+                <!-- UY BEGIN -->
+                <div id="uyan_frame"></div>
+                <script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js"></script>
+                <!-- UY END -->
+            </li>
+
+
         </ul>
         <!--返回顶部按钮-->
         <a href="" onclick="pageScroll()" class="backTopBtn"></a>
         <!--底部模块-->
         <div class="footer">
+            <!--底部工具条-->
             <div class="foot_tools">
 
             </div>
+            <!--版权-->
             <div class="foot_copyright"></div>
         </div>
     </div>
@@ -102,6 +127,8 @@
 
     </body>
 </html>
+
+<!--文章元素-->
 <!--<li>-->
 <!--<div class="leftLine"></div>-->
 <!--<div class="art_title"></div>-->

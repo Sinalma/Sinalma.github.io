@@ -9,6 +9,8 @@ ul li{
 }
 a{
     text-decoration: none;
+    margin: 0;
+    padding: 0;
 }
 html{
     height: 100%;
@@ -117,6 +119,7 @@ body{
 .navi .navi_bottom .home_div>a{
     color: #696969;
     pointer-events: auto;
+    cursor: pointer;
 }
 .navi .navi_bottom .home_div a:hover{
     color: burlywood;
@@ -128,6 +131,7 @@ body{
 .navi .navi_bottom .ablum_div>a{
     color: #696969;
     pointer-events: auto;
+    cursor: pointer;
 }
 .navi .navi_bottom .ablum_div a:hover{
     color: burlywood;
@@ -204,12 +208,28 @@ body{
     display: inline-block;
     width: 280px;
     height: 30px;
-    color: white;
+    color: white !important;
     font-size: 14px;
     margin-top: 20px;
     background-color: transparent;
     border: none;
     border-bottom: 3px solid white;
+}
+/*设置搜索框占位文字颜色*/
+.tools .allArticles>input[type=search]:-moz-placeholder {
+    color: white;
+}
+.tools .allArticles>input[type=search]::-webkit-input-placeholder
+{
+    color: white;
+}
+.tools .allArticles>input[type=search]:-ms-input-placeholder
+{
+    color: white;
+}
+.tools .allArticles>input[type=search] input:-moz-placeholder
+{
+    color: white;
 }
 /*是否显示标签栏的按钮外层*/
 .tools .allArticles .tools_showTags_div{
@@ -226,7 +246,7 @@ body{
 }
 /*是否显示标签栏的按钮内层*/
 .tools .allArticles .tools_isShowTags>button{
-    background: url("../images/icon_slider_off.png");
+    background: url("../images/icon_slider_on.png");
     width: 32px;
     height: 18px;
     outline: none;
@@ -237,43 +257,47 @@ body{
 /*标签栏*/
 .tools .allArticles>.tools_tags{
     margin-top: 15px;
-    background-color: rgba(255, 255, 255, 0.31);
+    /*0.31*/
+    background-color: rgba(255, 255, 255,0);
     margin-right: 20px;
     /*height: 200px;*/
     padding: 10px;
-
 }
 /*所有文章缩略的清单*/
 .tools .allArticles>.tools_art_list{
-    background-color: rgba(255, 255, 255, 0.31);
+    background-color: rgba(255, 255, 255, 0);
     margin-top: 15px;
     margin-right: 20px;
     height: 300px;
 }
-/*工具栏中<=790px时显示的选择条*/
-.tools .tools_selectbar{
-    background-color: red;
+/*工具栏中<=790px时显示的选择条（所有文章/关于我）*/
+.tools .tools_selectBar{
+    background-color: transparent;
     width: 210px;
     height: 25px;
     color: white;
-    position: fixed;
-    left: 50%;
-    top:50px;
-    transform: translateX(-50%);
+    /*position: fixed;*/
+    /*left: 50%;*/
+    /*top:50px;*/
+    /*transform: translateX(-50%);*/
+    display: none;
+    margin: 0 auto;
+    margin-top: 50px;
+    border: 1px solid white;
+    border-radius: 3px;
 }
-.tools .tools_selectbar>a{
-    background-color: white;
-    color: white;
+.tools .tools_selectbar a{
+    display: inline-block;
+    background-color: red;
     width: 105px;
-    height: 100%;
+    height: 25px;
 }
-
 /*内容模块布局*/
 .content{
     height: 100%;
     /*height: 7000px;*/
-    margin-left: 300px;//330
-    margin-right: 30px;
+    margin-left: 300px;/**330px*/
+    /*margin-right: 30px;*/
     transition: transform 0.5s ease-in-out 0s;
     background-color: #eaeaea;
     position: relative;
@@ -284,16 +308,80 @@ body{
     /*height: 7000px;*/
     overflow-y:auto;
     overflow-x: hidden;
-    /*opacity: 0;*/
 }
 /*内容模块-右侧内容-相册模块*/
 .content .content_ablum{
-    /*background-color: red;*/
-    /*width: 100%;*/
-    /*height: 100%;*/
-    /*overflow-y: auto;*/
-    /*overflow-x: hidden;*/
-    /*opacity: 1;*/
+    height: 100%;
+    overflow-y: auto;
+    display: none;
+    /*margin-left: 30px;*/
+    /*margin-right: 30px;*/
+}
+.content .content_ablum .content_ablum_navi{
+    background-color:white;
+    color: #4d4d4d;
+    height: 100%;
+    margin-left: 30px;
+    margin-right: 30px;
+    margin-top: 30px;
+    padding-left: 40px;
+    padding-top: 30px;
+    position: relative;
+}
+.content .content_ablum .ablum_lfet_line{
+    background-color: black;
+    width: 5px;
+    height: 80px;
+    display: inline-block;
+    position: absolute;
+    left: 0px;
+    top:0;
+}
+.content .content_ablum .content_ablum_navi h1{
+    display: inline-block;
+    margin-top: 0;
+}
+.content .content_ablum .ablum_menu{
+    width: 100%;
+    height: 30px;
+    margin-top: 20px;
+    /*display: inline-block;*/
+}
+.content .content_ablum .ablum_menu>a{
+    display: inline-block;
+    line-height: 25px;
+    font-size: 15px;
+    cursor: pointer;
+}
+.content .content_ablum .ablum_menu .ablum_menu_photo{
+    border: 1px solid #cccccc;
+    border-bottom: none;
+    text-align: center;
+    width: 40px;
+}
+.content .content_ablum .ablum_menu .ablum_menu_video{
+    width: 85%;
+    text-align: left;
+    margin-left: 0px;
+    border-bottom: 1px solid #cccccc;
+    transform:translateX(-5px);
+    padding-left: 5px;
+}
+/*照片部分，li*/
+.content .content_ablum .photo_li{
+    background-color: white;
+    width: 150px;
+    height: 150px;
+}
+.content .content_ablum .photo_li img{
+    width: 150px;
+    height: 150px;
+    margin-bottom: 30px;
+}
+.content .content_ablum .uyan_frame{
+    margin-top: 30px;
+    margin-left: 30px;
+    margin-right: 60px;
 }
 
 /*内容模块底部工具栏*/
@@ -482,5 +570,4 @@ body{
     }
     .content .content_articles{
     }
-
 }

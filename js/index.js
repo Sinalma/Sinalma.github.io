@@ -11,6 +11,7 @@ function $(id) {
     return typeof id === 'string' ? document.getElementById(id):id;
 }
 
+
 window.onload = function () {
 
     // childNodes所有子元素
@@ -24,6 +25,11 @@ window.onload = function () {
     var aboutBtn = $('abountMe_btn');
     // 所有文章按钮
     var allArtBtn = $('articles_btn');
+
+    // 导航栏主页按钮
+    var homeBtn = $('navi_home_a');
+    // 导航栏相册按钮
+    var ablumBtn = $('navi_ablum_a');
 
     // 工具栏
     var tools = $('tools');
@@ -40,6 +46,19 @@ window.onload = function () {
     var content = $('content');
     // 获取文章模块
     var content_articles = $('content_articles');
+    // 相册模块
+    var content_ablum = $('content_ablum');
+
+    // 切换内容模块
+    homeBtn.onclick = function () {
+        content_articles.style.display = 'block';
+        content_ablum.style.display = 'none';
+    }
+    ablumBtn.onclick = function () {
+        content_articles.style.display = 'none';
+        content_ablum.style.display = 'block';
+    }
+
 
     // 获取hud
     var hud = $('hud');
@@ -56,21 +75,24 @@ window.onload = function () {
         isShowTools = false;
     }
 
+    // 点击导航栏，收起工具栏
     navi_top.onclick = function () {
         // content.style.transform = 'none';
     }
     navi_bottom.onclick = function () {
     }
 
-    // 获取导航栏菜单
+    // 获取导航栏菜单(浏览器宽度<=790px时，导航栏顶部左侧的菜单按钮)
     var navi_menu = document.getElementById('navi_menu');
     navi_menu.onclick = function () {
         aboutBtn.onclick();
         window.onresize();
     }
 
-    // 是否是关于我的按钮
+    // 当前点击的是否是关于我的按钮
     var isAboutMeBtn = false;
+    // 当前工具栏显示的模块,0是初始值，1是所有文章,2是关于我
+    var curToolsShowModule = 0;
     allArtBtn.onclick = function () {
         isAboutMeBtn = false;
         showTools(isAboutMeBtn);
@@ -80,17 +102,43 @@ window.onload = function () {
         showTools(isAboutMeBtn);
     }
 
+    /**
+     * @method 显示或隐藏工具栏
+     * @description 当点击所有文章和关于我时调用此方法显示工具栏对应模块，当点击导航栏和右侧内容模块时调用此方法收起工具栏
+     * @param inner_isAboutMeBtn 是否点击了'关于我'的按钮
+     */
     function showTools(inner_isAboutMeBtn) {
-        // 显示工具模块目录
-        if (isShowTools == false){
+        if (inner_isAboutMeBtn == true){
+            tools_aboutMe.style.opacity = '1';
+            tools_allArt.style.opacity = '0';
+            tools_aboutMe.style.display = 'block';
+            tools_allArt.style.display = 'none';
+            // 前后两次点击的不是相同的按钮，则不用工具栏的隐藏操作
+            if (curToolsShowModule == 1){
+                curToolsShowModule = 2;
+                return;
+            }
+            curToolsShowModule = 2;
+        }else {
+            tools_aboutMe.style.opacity = '0';
+            tools_allArt.style.opacity = '1';
+            tools_aboutMe.style.display = 'none';
+            tools_allArt.style.display = 'block';
+            // 前后两次点击的不是相同的按钮，则不用工具栏的隐藏操作
+            if (curToolsShowModule == 2){
+                curToolsShowModule = 1;
+                return;
+            }
+            curToolsShowModule = 1;
+        }
+        if (isShowTools == false){    // 显示工具模块
             content.style.transform = 'translateX(300px)';
             tools.style.transform = 'translateX(300px)';
             content_articles.style.opacity = 0.5;
             content.style.backgroundColor = 'transparent';
             isShowTools = true;
             tools.style.boxShadow = 'none';
-        } else {
-            // 隐藏
+        } else { // 隐藏
             tools.style.transform = 'none';
             content.style.transform = 'none';
             content_articles.style.opacity = 1;
@@ -98,16 +146,10 @@ window.onload = function () {
             isShowTools = false;
             tools.style.boxShadow = '1px 1px 5px black';
         }
-        // alert(inner_isAboutMeBtn);
-        if (inner_isAboutMeBtn == true){
-            tools_aboutMe.style.opacity = '1';
-            tools_allArt.style.opacity = '0';
-        }else {
-            tools_aboutMe.style.opacity = '0';
-            tools_allArt.style.opacity = '1';
-        }
     }
 
+    // 系统方法，当浏览器宽度改变时自动调用
+    // 这里主要处理当工具栏是显示状态时，浏览器宽度逐渐小于等于790px时，改变界面布局
     window.onresize = function(){
         if (document.documentElement.clientWidth <= 790 && isShowTools == true){
             navi.style.transform = 'translate(300px,0)';
@@ -141,6 +183,7 @@ window.onload = function () {
                 li.style.height = '770px';
                 li.style.fontSize = '14px';
             }
+            // 隐藏每个文章左侧黑色线条
             for (var i=0;i<art_leftLines.length;i++){
                 var leftLine = art_leftLines[i];
                 leftLine.style.display = 'none';
@@ -157,6 +200,7 @@ window.onload = function () {
                 li.style.height = '800px';
                 li.style.fontSize = '17px';
             }
+            // 显示每个文章左侧黑色线条
             for (var i=0;i<art_leftLines.length;i++){
                 var leftLine = art_leftLines[i];
                 leftLine.style.display = 'block';
@@ -174,11 +218,11 @@ window.onload = function () {
     var isShowTag = true;
     isShowTagBtn.onclick = function () {
         isShowTag = !isShowTag;
-        if (isShowTag == true){
-            isShowTagBtn.style.backgroundImage = 'url("images/icon_slider_on.png")';
+        if (isShowTag == false){
+            isShowTagBtn.style.backgroundImage = 'url("images/icon_slider_off.png")';
             tools_tags_div.style.display = 'none';
         }else {
-            isShowTagBtn.style.backgroundImage = 'url("images/icon_slider_off.png")';
+            isShowTagBtn.style.backgroundImage = 'url("images/icon_slider_on.png")';
             tools_tags_div.style.display = 'block';
         }
     }
