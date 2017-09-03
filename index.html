@@ -5,13 +5,16 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=0.5, maximum-scale=2.0, user-scalable=yes" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="format-detection" content="telephone=no" />
-
+        <!--编码-->
         <meta charset="UTF-8">
-            <title>Personal Page</title>
+            <title>Sinalma HomePage</title>
         <link rel="stylesheet" href="css/index.css">
         <!-- 引入自定义组件组件-->
         <script src="component/tag.js"></script>
         <script src="component/article.js"></script>
+        <!--图片浏览器处理js-->
+        <!--<script src="js/photobroswer.js"></script>-->
+        <!--主js-->
         <script type="text/javascript" src="js/index.js"></script>
         <!--引入markdown--marked.js-->
         <script src="marked-master/lib/marked.js"></script>
@@ -98,7 +101,7 @@
             </li>
             <li class="photo_li">
                 <p photo_li_date>2017.7</p>
-                <figure>
+                <figure onclick="pb_showFigure('photos/2017/icon.jpg','本人')">
                     <a>
                         <img src="photos/2017/icon.jpg">
                     </a>
@@ -107,13 +110,13 @@
             </li>
             <li class="photo_li">
                 <p photo_li_date>2016</p>
-                <figure>
+                <figure onclick="pb_showFigure('photos/2016/35.pic.jpg','科室聚餐')">
                     <a>
                         <img src="photos/2016/35.pic.jpg">
                     </a>
                     <figcaption style="display:none">科室聚餐</figcaption>
                 </figure>
-                <figure>
+                <figure onclick="pb_showFigure('photos/2016/mmexport1460735205796.jpg','鸡是好鸡，正不正经我就不知道了。')">
                 <a>
                     <img src="photos/2016/mmexport1460735205796.jpg">
                 </a>
@@ -122,7 +125,7 @@
             </li>
             <li class="photo_li">
                 <p photo_li_date>2014</p>
-                <figure>
+                <figure onclick="pb_showFigure('photos/2014/2014_04_10_12_25_00.jpg','实验室的我，那么深沉')">
                     <a>
                         <img src="photos/2014/2014_04_10_12_25_00.jpg">
                     </a>
@@ -158,17 +161,25 @@
     <!--黑色背景，暂时只实现查看点击的图片，其他图片不能滑动查看-->
     <div class="photoBrowser" id="photoBrowser" >
         <!--索引和总图片数，暂时不可用-->
-        <!--<div class="pb_index" style="display: none;">-->
-            <!--<span class="pb_curIndex"></span>-->
-            <!--&lt;!&ndash;/&ndash;&gt;-->
-            <!--<span class="pb_totalCount"></span>-->
-        <!--</div>-->
-        <div class="pb_closeBtn"></div>
-        <div class="pb_fullWindowBtn"></div>
-        <div class="pb_magnifier"></div>
-        <div class="pb_preBtn"></div>
-        <div class="pb_nextBtn"></div>
-        <figure></figure>
+        <div class="pb_indexDiv" id="pb_indexDiv">
+            <span class="pb_curIndex">1</span>
+            &nbsp;
+            /
+            &nbsp;
+            <span class="pb_totalCount">1</span>
+        </div>
+        <div class="pb_closeBtn" id="pb_closeBtn"></div>
+        <div class="pb_fullWindowBtn" id="pb_fullWindowBtn"></div>
+        <div class="pb_magnifier" id="pb_magnifier"></div>
+        <div class="pb_preBtn" id="pb_preBtn"></div>
+        <div class="pb_nextBtn" id="pb_nextBtn"></div>
+        <!--<figure class="pb_figure"></figure>-->
+        <figure class="pb_figure" id="pb_figure">
+            <a>
+                <img id="pb_img" src="photos/2014/2014_04_10_12_25_00.jpg">
+            </a>
+            <figcaption id="pb_figcaption" style="display:block;">实验室的我，那么深沉</figcaption>
+        </figure>
     </div>
 
     </body>

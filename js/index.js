@@ -11,7 +11,6 @@ function $(id) {
     return typeof id === 'string' ? document.getElementById(id):id;
 }
 
-
 window.onload = function () {
 
     // childNodes所有子元素
@@ -229,6 +228,48 @@ window.onload = function () {
 
     // 发表文章
     composeArticles();
+
+    photoBroswerConfig();
+}
+
+function pb_showFigure(imgN,desc) {
+    var photoBroswer = $('photoBrowser');
+    photoBroswer.style.display = 'block';
+    var pb_img = $('pb_img');
+    var pb_figcaption = $('pb_figcaption');
+    pb_img.setAttribute('src',imgN);
+    pb_figcaption.innerText = desc;
+}
+
+/**
+ * 处理图片浏览器
+ */
+function photoBroswerConfig() {
+    // 图片浏览器主界面
+    var photoBroswer = $('photoBrowser');
+
+    // 关闭按钮
+    var pb_closeBtn = $('pb_closeBtn');
+    // 图片放大缩小的按钮
+    var pb_magnifierBtn = $('pb_magnifier');
+    // 全屏和退出全屏的按钮
+    var pb_fullWindowBtn = $('pb_fullWindowBtn');
+    // 索引模块
+    var pb_indexDiv = $('pb_indexDiv');
+    // 上一张按钮
+    var ph_preBtn = $('pb_preBtn');
+    // 下一张按钮
+    var ph_preBtn = $('pb_nextBtn');
+    // 图片figure
+    var ph_figure = $('pb_figure');
+
+    pb_closeBtn.onclick = function () {
+        photoBroswer.style.display = 'none';
+    }
+
+    pb_magnifierBtn.onclick = function () {
+        ph_figure.style.transform = 'scale(1.3,1.3)';
+    }
 }
 
 /**

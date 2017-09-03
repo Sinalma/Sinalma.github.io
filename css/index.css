@@ -1,4 +1,4 @@
-address, b, big, blockquote, body, center, cite, code, dd, del, div, dl, dt, em, fieldset, font, form, h1, h2, h3, h4, h5, h6, html, i, iframe, img, ins, label, legend, li, ol, p, pre, small, span, strong, u, ul, var{
+address,figure,b, big, blockquote, body, center, cite, code, dd, del, div, dl, dt, em, fieldset, font, form, h1, h2, h3, h4, h5, h6, html, i, iframe, img, ins, label, legend, li, ol, p, pre, small, span, strong, u, ul, var{
     padding: 0;
     margin: 0;
 }
@@ -438,63 +438,105 @@ body{
     position: fixed;
     top:0;
     left:0;
+    transition: display 1s ease-in-out 0s;
 }
-/*暂时不做这个功能*/
-.photoBrowser .pb_index{
-    /*display: none;*/
+/*浏览器左上角当前显示图片的索引和图片总数*/
+.photoBrowser .pb_indexDiv{
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    color: #cccccc;
+    font-size: 17px;
+    background: none;
+    cursor: none;
+    display: inline-block;
 }
-.photoBrowser div{
+.photoBrowser .pb_indexDiv>span{
+}
+.photoBrowser>div{
     cursor: pointer;
+    background: url("../images/default-skin.png") no-repeat center top;
+    position: absolute;
+}
+.photoBrowser .pb_closeBtn{
+    background-position: -15px -59px;
+    width: 14px;
+    height: 14px;
+    top: 20px;
+    right: 20px;
 }
 .photoBrowser .pb_fullWindowBtn{
-    background: url("../images/default-skin.png") no-repeat center top;
-    background-position: 13px 15px;
-    width: 50px;
-    height: 50px;
+    background-position: -13px -15px;
+    width: 18px;
+    height: 14px;
     /*18 14*/
-    position: absolute;
-    top: 10px;
-    right: 170px;
+    top: 20px;
+    right: 74px;
     /*退出全屏*/
-    /*background-position: 57px 15px;*/
+    /*background-position: -57px -15px;*/
     /*width: 18px;*/
     /*height: 14px;*/
 }
-.photoBrowser .pb_closeBtn{
-    background: url("../images/default-skin.png") no-repeat center top;
-    background-position: 15px 59px;
-    width: 50px;
-    height: 50px;
-    /*14 14*/
-    position: absolute;
-    top: 10px;
-    right: 10px;
-}
-.photoBrowser .pb_prebtn{
-    background: url("../images/default-skin.png") no-repeat center top;
-    background-position: 147px 53px;
-    width: 14px;
-    height: 12px;
-}
-.photoBrowser .pb_nextBtn{
-    background: url("../images/default-skin.png") no-repeat center top;
-    background-position: 103px 53px;
-    width: 14px;
-    height: 12px;
-}
+/*放大镜按钮*/
 .photoBrowser .pb_magnifier{
-    background: url("../images/default-skin.png") no-repeat center top;
-    background-position: 102px 15px;
+    background-position: -102px -15px;
     width: 15px;
     height: 15px;
-    /*放小*/
-    /*background-position: 146px 15px;*/
+    top: 20px;
+    right: 129px;
+    /*缩小镜*/
+    /*background-position: -146px -15px;*/
     /*width: 15px;*/
     /*height: 15px;*/
     /*返回的图标*/
     /*background-position: 58px 60px;*/
     /*width: 16px;*/
     /*height: 13px;*/
+}
+.photoBrowser .pb_preBtn{
+    background-position: -147px -53px;
+    width: 14px;
+    height: 12px;
+    top:50%;
+    left: 20px;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.45);
+}
+.photoBrowser .pb_nextBtn{
+    background-position: -103px -53px;
+    width: 14px;
+    height: 12px;
+    top:50%;
+    right: 20px;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.45);
+}
+.photoBrowser .pb_figure{
+    position: absolute;
+    top:50%;
+    left:50%;
+    transform: translate(-50%,-50%);
+    width: 70%;
+    height: 100%;
+    display: inline-block;
+    /*transform: translate(-50%,-50%);*/
+}
+.photoBrowser .pb_figure>a>img{
+    width: 100%;
+    height: 80%;
+    display: inline-block;
+    position: fixed;
+    top:50%;
+    left:50%;
+    transform: translate(-50%,-50%);
+}
+.photoBrowser .pb_figure>figcaption{
+    position: fixed;
+    bottom: 15px;
+    left: 50%;
+    transform: translate(-50%,0);
+    font-size: 15px;
+    color: white;
 }
 
 /*每个文章*/
