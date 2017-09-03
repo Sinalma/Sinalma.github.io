@@ -704,4 +704,10 @@ body{
     .content .content_ablum .content_ablum_navi .ablum_lfet_line{
         display: none;
     }
+    .content .content_ablum .content_ablum_navi h1{
+        font-size: 20px;
+        display: block;
+        border-bottom: 1px dashed #cccccc;
+        padding-bottom: 10px;
+    }
 }
