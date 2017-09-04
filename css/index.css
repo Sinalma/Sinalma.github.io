@@ -170,7 +170,6 @@ body{
     position: relative;
     float: left;
     transition: transform 0.5s ease-in-out 0s;
-    /*transition: all 0.5s ease-in-out 0s;*/
     box-shadow: 1px 1px 5px black;
 }
 .tools .introduction{
@@ -381,14 +380,14 @@ body{
     /*float: left;*/
     width: 150px;
     height: 150px;
-    /*margin-left: 0px;*/
-    /*margin-right: 0px;*/
+    /*width: 25%;*/
+    /*height:0;*/
     margin: 0;
     cursor: pointer;
 }
 .content .content_ablum .photo_li img{
-    width: 150px;
-    height: 150px;
+    width: 100%;
+    height: 100%;
     margin-bottom: 30px;
 }
 .content .content_ablum .photo_li p{
@@ -430,7 +429,6 @@ body{
 /*图片浏览器*/
 .photoBrowser{
     background-color: black;
-    opacity: 1;
     width: 100%;
     height: 100%;
     display: none;
@@ -438,39 +436,47 @@ body{
     position: fixed;
     top:0;
     left:0;
-    transition: display 1s ease-in-out 0s;
+}
+/*图片浏览器顶部导航栏*/
+.photoBrowser .pb_naviTop{
+    width: 100%;
+    height: 45px;
+    background-color: rgba(0,0,0,0.45);
+    position: absolute;
+    top:0px;
+    left: 0px;
+    z-index: 1210;
 }
 /*浏览器左上角当前显示图片的索引和图片总数*/
 .photoBrowser .pb_indexDiv{
+    background: url("../images/default-skin.png") no-repeat center top;
     position: absolute;
-    top: 15px;
+    top: 10px;
     left: 15px;
     color: #cccccc;
     font-size: 17px;
     background: none;
     cursor: none;
-    display: inline-block;
 }
-.photoBrowser .pb_indexDiv>span{
-}
-.photoBrowser>div{
+.photoBrowser .pb_closeBtn{
     cursor: pointer;
     background: url("../images/default-skin.png") no-repeat center top;
     position: absolute;
-}
-.photoBrowser .pb_closeBtn{
     background-position: -15px -59px;
     width: 14px;
     height: 14px;
-    top: 20px;
+    top: 15px;
     right: 20px;
 }
 .photoBrowser .pb_fullWindowBtn{
+    cursor: pointer;
+    background: url("../images/default-skin.png") no-repeat center top;
+    position: absolute;
     background-position: -13px -15px;
     width: 18px;
     height: 14px;
     /*18 14*/
-    top: 20px;
+    top: 15px;
     right: 74px;
     /*退出全屏*/
     /*background-position: -57px -15px;*/
@@ -479,10 +485,13 @@ body{
 }
 /*放大镜按钮*/
 .photoBrowser .pb_magnifier{
+    cursor: pointer;
+    background: url("../images/default-skin.png") no-repeat center top;
+    position: absolute;
     background-position: -102px -15px;
     width: 15px;
     height: 15px;
-    top: 20px;
+    top: 15px;
     right: 129px;
     /*缩小镜*/
     /*background-position: -146px -15px;*/
@@ -493,33 +502,47 @@ body{
     /*width: 16px;*/
     /*height: 13px;*/
 }
-.photoBrowser .pb_preBtn{
-    background-position: -147px -53px;
-    width: 14px;
-    height: 12px;
-    top:50%;
-    left: 20px;
-    transform: translateY(-50%);
+.photoBrowser .pb_nextBtn,.pb_preBtn{
+    cursor: pointer;
+    position: absolute;
     background-color: rgba(0, 0, 0, 0.45);
+    transform: translateY(-50%);
+    width: 30px;
+    height: 30px;
+    top:50%;
+    z-index: 1210;
+}
+.photoBrowser .pb_preBtn{
+    left: 20px;
 }
 .photoBrowser .pb_nextBtn{
-    background-position: -103px -53px;
+    right: 20px;
+}
+/*设置左右两个按钮内部div需要的共同设置*/
+.photoBrowser .pb_inner_icon_arrow{
+    background: url("../images/default-skin.png") no-repeat center top;
     width: 14px;
     height: 12px;
+    position: absolute;
     top:50%;
-    right: 20px;
-    transform: translateY(-50%);
-    background-color: rgba(0, 0, 0, 0.45);
+    left:50%;
+    transform: translate(-50%,-50%);
+}
+.photoBrowser .pb_preBtn>div{
+    background-position: -147px -53px;
+}
+.photoBrowser .pb_nextBtn>div{
+    background-position: -103px -53px;
 }
 .photoBrowser .pb_figure{
     position: absolute;
     top:50%;
     left:50%;
+    /*先缩小，弹出图片浏览器后放大*/
     transform: translate(-50%,-50%);
     width: 70%;
     height: 100%;
-    display: inline-block;
-    /*transform: translate(-50%,-50%);*/
+    transition: all 0.7s ease-in-out 0s;
 }
 .photoBrowser .pb_figure>a>img{
     width: 100%;
@@ -530,13 +553,17 @@ body{
     left:50%;
     transform: translate(-50%,-50%);
 }
-.photoBrowser .pb_figure>figcaption{
-    position: fixed;
-    bottom: 15px;
-    left: 50%;
-    transform: translate(-50%,0);
-    font-size: 15px;
+.photoBrowser .pb_figcaption{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    font-size: 14px;
     color: white;
+    background-color: rgba(0,0,0,0.45);
+    width: 100%;
+    height: 45px;
+    text-align: center;
+    line-height: 45px;
 }
 
 /*每个文章*/

@@ -239,6 +239,7 @@ function pb_showFigure(imgN,desc) {
     var pb_figcaption = $('pb_figcaption');
     pb_img.setAttribute('src',imgN);
     pb_figcaption.innerText = desc;
+
 }
 
 /**
@@ -257,18 +258,48 @@ function photoBroswerConfig() {
     // 索引模块
     var pb_indexDiv = $('pb_indexDiv');
     // 上一张按钮
-    var ph_preBtn = $('pb_preBtn');
+    var pb_preBtn = $('pb_preBtn');
     // 下一张按钮
-    var ph_preBtn = $('pb_nextBtn');
+    var pb_preBtn = $('pb_nextBtn');
     // 图片figure
-    var ph_figure = $('pb_figure');
+    var pb_figure = $('pb_figure');
+
+    // photoBroswer.onclick = function () {
+    //     pb_closeBtn.onclick();
+    // }
 
     pb_closeBtn.onclick = function () {
+        reducePb_figure();
         photoBroswer.style.display = 'none';
     }
 
+    pb_figure.onclick = function () {
+        pb_magnifierBtn.onclick();
+    }
+
+
+    var pb_isBig = false;
+    // 点击了放大镜
     pb_magnifierBtn.onclick = function () {
-        ph_figure.style.transform = 'scale(1.3,1.3)';
+        if (pb_isBig == false){
+            enlargePb_figure();
+        }else {
+            reducePb_figure();
+        }
+    }
+    // 放大图片
+    function enlargePb_figure() {
+        pb_figure.style.width = '90%';
+        pb_figure.style.height = '120%';
+        pb_isBig = true;
+        pb_magnifierBtn.style.backgroundPosition = '-146px -15px';
+    }
+    // 缩小图片
+    function reducePb_figure() {
+        pb_figure.style.width = '70%';
+        pb_figure.style.height = '100%';
+        pb_isBig = false;
+        pb_magnifierBtn.style.backgroundPosition = '-102px -15px';
     }
 }
 

@@ -229,7 +229,7 @@
             <div class="foot_copyright"></div>
         </div>
     </div>
-    </div> <!--contain结束-->
+    </div> <!--container结束-->
 
     <!--宽度<=790px左侧的蒙版-->
     <div class="hud" id="hud"></div>
@@ -237,26 +237,28 @@
     <!--图片浏览器-->
     <!--黑色背景，暂时只实现查看点击的图片，其他图片不能滑动查看-->
     <div class="photoBrowser" id="photoBrowser" >
-        <!--索引和总图片数，暂时不可用-->
-        <div class="pb_indexDiv" id="pb_indexDiv">
-            <span class="pb_curIndex">1</span>
-            &nbsp;
-            /
-            &nbsp;
-            <span class="pb_totalCount">1</span>
+        <div class="pb_naviTop">
+            <!--索引和总图片数，暂时不可用-->
+            <div class="pb_indexDiv" id="pb_indexDiv">
+                <span class="pb_curIndex">1</span>
+                &nbsp;
+                /
+                &nbsp;
+                <span class="pb_totalCount">1</span>
+            </div>
+            <div class="pb_closeBtn" id="pb_closeBtn"></div>
+            <div class="pb_fullWindowBtn" id="pb_fullWindowBtn"></div>
+            <div class="pb_magnifier" id="pb_magnifier"></div>
         </div>
-        <div class="pb_closeBtn" id="pb_closeBtn"></div>
-        <div class="pb_fullWindowBtn" id="pb_fullWindowBtn"></div>
-        <div class="pb_magnifier" id="pb_magnifier"></div>
-        <div class="pb_preBtn" id="pb_preBtn"></div>
-        <div class="pb_nextBtn" id="pb_nextBtn"></div>
-        <!--<figure class="pb_figure"></figure>-->
+        <div class="pb_preBtn" id="pb_preBtn"><div class="pb_inner_icon_arrow"></div></div>
+        <div class="pb_nextBtn" id="pb_nextBtn"><div class="pb_inner_icon_arrow"></div></div>
+        <!--<div class="pb_naviBottom"></div>-->
         <figure class="pb_figure" id="pb_figure">
             <a>
-                <img id="pb_img" src="photos/2014/2014_04_10_12_25_00.jpg">
+                <img id="pb_img" src="photos/2015/happy.jpg">
             </a>
-            <figcaption id="pb_figcaption" style="display:block;">实验室的我，那么深沉</figcaption>
         </figure>
+        <figcaption class="pb_figcaption" id="pb_figcaption" style="display:block;">stay simple,stay navie.</figcaption>
     </div>
 
     </body>
