@@ -11,48 +11,183 @@ function $(id) {
     return typeof id === 'string' ? document.getElementById(id):id;
 }
 
-window.onload = function () {
+// 元素>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+// 导航栏
+var navi;
+var navi_top;
+var navi_bottom;
+// 获取导航栏菜单(浏览器宽度<=790px时，导航栏顶部左侧的菜单按钮)
+var navi_menu;
+// 关于我的按钮
+var aboutBtn;
+// 所有文章按钮
+var allArtBtn;
+// 导航栏主页按钮
+var homeBtn;
+// 导航栏相册按钮
+var ablumBtn;
 
-    // childNodes所有子元素
-    // children所有直接子元素
+// 工具栏
+var tools;
+// 工具栏-关于我模块
+var tools_aboutMe;
+// 工具栏-所有文章菜单栏
+var tools_allArt;
+// 是否显示标签的按钮
+var isShowTagBtn;
+// 工具栏-显示tags的div
+var tools_tags_div;
+// tag数组
+var tag_arr;
+// 工具栏显示状态
+var isShowTools;
+// 屏幕宽度是否 <= 790px
+var isLittleWindow;
+
+// 内容模块-
+var content;
+// 获取文章模块
+var content_articles;
+// 相册模块
+var content_ablum;
+
+// 显示工具栏后出现的蒙版
+var hud;
+
+// 图片浏览器模块
+var photoBroswer;
+var pb_img;
+// 图片文字描述
+var pb_figcaption;
+// 关闭按钮
+var pb_closeBtn;
+// 图片放大缩小的按钮
+var pb_magnifierBtn;
+// 全屏和退出全屏的按钮
+var pb_fullWindowBtn;
+// 索引模块
+var pb_indexDiv;
+// 上一张按钮
+var pb_preBtn;
+// 下一张按钮
+var pb_nextBtn;
+// 图片figure
+var pb_figure;
+
+
+// 变量>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+// 当前图片浏览器显示的图片尺寸
+var pb_img_widht;
+var pb_img_height;
+// 图片浏览器宽高
+var pb_width;
+var pb_height;
+// 合适的图片宽高
+var imgSuitableW;
+var imgSuitableH;
+
+
+function getHtmlElements() {
 
     // 导航栏
-    var navi = $('navi');
-    var navi_top = $('navi_top');
-    var navi_bottom = $('navi_bottom');
+    navi = $('navi');
+    navi_top = $('navi_top');
+    navi_bottom = $('navi_bottom');
+    // 获取导航栏菜单(浏览器宽度<=790px时，导航栏顶部左侧的菜单按钮)
+    navi_menu = $('navi_menu');
     // 关于我的按钮
-    var aboutBtn = $('abountMe_btn');
+    aboutBtn = $('abountMe_btn');
     // 所有文章按钮
-    var allArtBtn = $('articles_btn');
+    allArtBtn = $('articles_btn');
 
     // 导航栏主页按钮
-    var homeBtn = $('navi_home_a');
+    homeBtn = $('navi_home_a');
     // 导航栏相册按钮
-    var ablumBtn = $('navi_ablum_a');
+    ablumBtn = $('navi_ablum_a');
 
     // 工具栏
-    var tools = $('tools');
+    tools = $('tools');
     // 工具栏-关于我模块
-    var tools_aboutMe = $('introduction');
+    tools_aboutMe = $('introduction');
     // 工具栏-所有文章菜单栏
-    var tools_allArt = $('allArticles');
+    tools_allArt = $('allArticles');
+    // 是否显示标签的按钮
+    isShowTagBtn = $('tools_isShowTags_btn');
+
+    // 工具栏-显示tags的div
+    tools_tags_div = $('tools_tags');
+    // tag文字数组
+    tag_arr = new Array('json','原创','博客','网站','html','javascript','css','标签','终端');
+
     // 工具栏显示状态
-    var isShowTools = false;
+    isShowTools = false;
     // 屏幕宽度是否 <= 790px
-    var isLittleWindow = false;
+    isLittleWindow = false;
 
     // 内容模块-
-    var content = $('content');
+    content = $('content');
     // 获取文章模块
-    var content_articles = $('content_articles');
+    content_articles = $('content_articles');
     // 相册模块
-    var content_ablum = $('content_ablum');
+    content_ablum = $('content_ablum');
 
-    // 系统方法，当浏览器宽度改变时自动调用
-    window.onresize = function () {
-        tools_windowOnResize();
-        pb_windowOnResize();
-    }
+    // 显示工具栏后出现的蒙版
+    hud = $('hud');
+
+    // 图片浏览器模块
+    photoBroswer = $('photoBrowser');
+    pb_img = $('pb_img');
+    pb_figcaption = $('pb_figcaption');
+    // 关闭按钮
+    pb_closeBtn = $('pb_closeBtn');
+    // 图片放大缩小的按钮
+    pb_magnifierBtn = $('pb_magnifier');
+    // 全屏和退出全屏的按钮
+    pb_fullWindowBtn = $('pb_fullWindowBtn');
+    // 索引模块
+    pb_indexDiv = $('pb_indexDiv');
+    // 上一张按钮
+    pb_preBtn = $('pb_preBtn');
+    // 下一张按钮
+    pb_nextBtn = $('pb_nextBtn');
+    // 图片figure
+    pb_figure = $('pb_figure');
+
+}
+
+/**
+ * 启动入口
+ */
+window.onload = function () {
+
+    // 获取所有需要用的元素
+    getHtmlElements();
+
+    // 处理工具栏的显示和隐藏
+    showOrHideTools();
+
+    // 创建工具栏所有文章模块的标签
+    createTags(tag_arr,tools_tags_div);
+
+    // 工具栏-是否显示tag标签按钮
+    dealToolsTagBtnClick();
+
+    // 发表文章
+    composeArticles();
+
+    // 浏览器配置
+    photoBroswerConfig();
+}
+
+// 系统方法，当浏览器宽度改变时自动调用
+window.onresize = function () {
+    tools_windowOnResize();
+    pb_windowOnResize();
+}
+
+
+// 处理工具栏的显示和隐藏
+function showOrHideTools() {
 
     // 切换内容模块
     homeBtn.onclick = function () {
@@ -64,9 +199,6 @@ window.onload = function () {
         content_ablum.style.display = 'block';
     }
 
-
-    // 获取hud
-    var hud = $('hud');
     hud.onclick = function () {
         navi.style.transform = 'none';
         content.style.backgroundColor = 'transparent';
@@ -87,12 +219,11 @@ window.onload = function () {
     navi_bottom.onclick = function () {
     }
 
-    // 获取导航栏菜单(浏览器宽度<=790px时，导航栏顶部左侧的菜单按钮)
-    var navi_menu = document.getElementById('navi_menu');
     navi_menu.onclick = function () {
         aboutBtn.onclick();
         window.onresize();
     }
+
 
     // 当前点击的是否是关于我的按钮
     var isAboutMeBtn = false;
@@ -154,75 +285,10 @@ window.onload = function () {
             tools.style.boxShadow = '1px 1px 5px black';
         }
     }
+}
 
-    // 这里主要处理当工具栏是显示状态时，浏览器宽度逐渐小于等于790px时，改变界面布局
-     function tools_windowOnResize(){
-        if (document.documentElement.clientWidth <= 790 && isShowTools == true){
-            navi.style.transform = 'translate(300px,0)';
-            content.style.backgroundColor = '#eaeaea';
-            // content_articles.style.backgroundColor = 'transparent';
-            content_articles.style.opacity = 1;
-            content_ablum.style.opacity = 1;
-            tools.style.position = 'fixed';
-            hud.style.display = 'block';
-            tools.style.zIndex = '1200';
-            tools.style.boxShadow = '1px 1px 5px black';
-        }else if(document.documentElement.clientWidth > 790 && isShowTools == true){
-            navi.style.transform = 'none';
-            content.style.backgroundColor = 'transparent';
-            content_articles.style.opacity = 0.5;
-            content_ablum.style.opacity = 0.5;
-            hud.style.display = 'none';
-            tools.style.zIndex = '0';
-            tools.style.boxShadow = 'none';
-        }
-
-        // 所有文章左侧顶部的黑条
-        var art_leftLines = document.getElementsByClassName('article_leftLine');
-
-        if (document.documentElement.clientWidth <= 790 ) {
-            for (var i=0;i<content_articles.children.length;i++){
-                var li = content_articles.children[i];
-                li.style.marginTop = '0px';
-                li.style.marginLeft = '0';
-                li.style.marginRight = '0';
-                li.style.marginBottom = '10px';
-                li.style.padding = '10px 10px 0px 10px';
-                li.style.height = '770px';
-                li.style.fontSize = '14px';
-            }
-            // 隐藏每个文章左侧黑色线条
-            for (var i=0;i<art_leftLines.length;i++){
-                var leftLine = art_leftLines[i];
-                leftLine.style.display = 'none';
-            }
-
-        }else {
-            for (var i=0;i<content_articles.children.length;i++){
-                var li = content_articles.children[i];
-                li.style.marginTop = '30px';
-                li.style.marginLeft = '30px';
-                li.style.marginRight = '30px';
-                li.style.marginBottom = '0px';
-                li.style.padding = '30px 60px 0px 60px';
-                li.style.height = '800px';
-                li.style.fontSize = '17px';
-            }
-            // 显示每个文章左侧黑色线条
-            for (var i=0;i<art_leftLines.length;i++){
-                var leftLine = art_leftLines[i];
-                leftLine.style.display = 'block';
-            }
-        }
-    }
-
-    // 工具栏-显示tags的div
-    var tools_tags_div = $('tools_tags');
-    var tag_arr = new Array('json','原创','博客','网站','html','javascript','css','标签','终端');
-    createTags(tag_arr,tools_tags_div);
-
-    // 工具栏-是否显示tag标签按钮
-    var isShowTagBtn = $('tools_isShowTags_btn');
+// 处理工具栏是否显示tag的按钮
+function dealToolsTagBtnClick() {
     var isShowTag = true;
     isShowTagBtn.onclick = function () {
         isShowTag = !isShowTag;
@@ -234,11 +300,74 @@ window.onload = function () {
             tools_tags_div.style.display = 'block';
         }
     }
+}
 
-    // 发表文章
-    composeArticles();
+// 这里主要处理当工具栏是显示状态时，浏览器宽度逐渐小于等于790px时，改变界面布局
+function tools_windowOnResize(){
+    if (document.documentElement.clientWidth <= 790 && isShowTools == true){
+        navi.style.transform = 'translate(300px,0)';
+        content.style.backgroundColor = '#eaeaea';
+        content_articles.style.opacity = 1;
+        content_ablum.style.opacity = 1;
+        tools.style.position = 'fixed';
+        hud.style.display = 'block';
+        tools.style.zIndex = '1200';
+        tools.style.boxShadow = '1px 1px 5px black';
+    }else if(document.documentElement.clientWidth > 790 && isShowTools == true){
+        navi.style.transform = 'none';
+        content.style.backgroundColor = 'transparent';
+        content_articles.style.opacity = 0.5;
+        content_ablum.style.opacity = 0.5;
+        hud.style.display = 'none';
+        tools.style.zIndex = '0';
+        tools.style.boxShadow = 'none';
+    }
 
-    photoBroswerConfig();
+    // 隐藏或显示文章左侧黑条
+    showOrHideAllArticlesLftLine();
+}
+
+/**
+ * 当宽度<=790px隐藏或显示所有文章左边黑色线条
+ */
+function showOrHideAllArticlesLftLine() {
+    // 所有文章左侧顶部的黑条
+    var art_leftLines = document.getElementsByClassName('article_leftLine');
+
+    if (document.documentElement.clientWidth <= 790 ) {
+        for (var i=0;i<content_articles.children.length;i++){
+            var li = content_articles.children[i];
+            li.style.marginTop = '0px';
+            li.style.marginLeft = '0';
+            li.style.marginRight = '0';
+            li.style.marginBottom = '10px';
+            li.style.padding = '10px 10px 0px 10px';
+            li.style.height = '770px';
+            li.style.fontSize = '14px';
+        }
+        // 隐藏每个文章左侧黑色线条
+        for (var i=0;i<art_leftLines.length;i++){
+            var leftLine = art_leftLines[i];
+            leftLine.style.display = 'none';
+        }
+
+    }else {
+        for (var i=0;i<content_articles.children.length;i++){
+            var li = content_articles.children[i];
+            li.style.marginTop = '30px';
+            li.style.marginLeft = '30px';
+            li.style.marginRight = '30px';
+            li.style.marginBottom = '0px';
+            li.style.padding = '30px 60px 0px 60px';
+            li.style.height = '800px';
+            li.style.fontSize = '17px';
+        }
+        // 显示每个文章左侧黑色线条
+        for (var i=0;i<art_leftLines.length;i++){
+            var leftLine = art_leftLines[i];
+            leftLine.style.display = 'block';
+        }
+    }
 }
 
 /**
@@ -247,87 +376,50 @@ window.onload = function () {
  * @param imgN 图片名，相对路径
  * @param desc 图片配字
  */
-/**
- * @implemention detail
- *
- * */
 function pb_showFigure(imgN,desc) {
-    var photoBroswer = $('photoBrowser');
+
     photoBroswer.style.display = 'block';
-    var pb_width = photoBroswer.offsetWidth;
-    var pb_height = photoBroswer.offsetHeight;
-    var imgSuitableWH = pb_width > pb_height ? pb_height-45*2 : pb_width;
-    var pb_img = $('pb_img');
+    pb_figcaption.innerText = desc;
     pb_img.setAttribute('src',imgN);
-    var pb_figcaption = $('pb_figcaption');
-    var img_width = '0';
-    var img_height = '0';
+
     var img = new Image();
     img.src = imgN;
-
-    var imgSuitableW = pb_width - 50 * 2;
-    var imgSuitableH = pb_height - 45 * 2;
     img.onload = function () {
-        img_width = this.width;
-        img_height = this.height;
+        pb_img_widht = this.width;
+        pb_img_height = this.height;
         // 默认根据高度，让宽度自动适应
-        pb_figure.style.height = imgSuitableWH+'px';
-        resetImgSize();
-
-    }
-
-    /**
-     * 根据浏览器宽高，重新设置图片的尺寸
-     */
-    function resetImgSize() {
-        if (img_width >= img_height){
-            pb_figure.style.width = imgSuitableW + 'px';
-            pb_figure.style.height = (1-((img_width-imgSuitableW)/img_width))*img_height+'px';
-        }else {
-
-            pb_figure.style.height = imgSuitableH + 'px';
-            pb_figure.style.width = (1-((img_height-imgSuitableH)/img_height))*img_width+'px';
-        }
-    }
-
-    // 图片figure
-    var pb_figure = $('pb_figure');
-    pb_figcaption.innerText = desc;
-
-    pb_figure.style.width = img_width+'px';
-
-    function pb_windowOnResize() {
-        imgSuitableW = photoBroswer.offsetWidth -100;
-        imgSuitableH = photoBroswer.offsetHeight - 90;
         resetImgSize();
     }
 }
+
+// 屏幕尺寸发生改变时调用
+function pb_windowOnResize() {
+    pb_width = photoBroswer.offsetWidth;
+    pb_height = photoBroswer.offsetHeight;
+    imgSuitableW = pb_width - 50 * 2;
+    imgSuitableH = pb_height - 45 * 2;
+    // 重新设置图片尺寸
+    resetImgSize();
+}
+
+/**
+ * 根据浏览器宽高，重新设置图片的尺寸
+ */
+function resetImgSize() {
+    if (pb_img_widht >= pb_img_height){
+        pb_figure.style.width = imgSuitableW + 'px';
+        pb_figure.style.height = (1-((pb_img_widht-imgSuitableW)/pb_img_widht))*pb_img_height+'px';
+    }else {
+        pb_figure.style.height = imgSuitableH + 'px';
+        pb_figure.style.width = (1-((pb_img_height-imgSuitableH)/pb_img_height))*pb_img_widht+'px';
+    }
+}
+
 
 /**
  * 处理图片浏览器
  */
 function photoBroswerConfig() {
-    // 图片浏览器主界面
-    var photoBroswer = $('photoBrowser');
-
-    // 关闭按钮
-    var pb_closeBtn = $('pb_closeBtn');
-    // 图片放大缩小的按钮
-    var pb_magnifierBtn = $('pb_magnifier');
-    // 全屏和退出全屏的按钮
-    var pb_fullWindowBtn = $('pb_fullWindowBtn');
-    // 索引模块
-    var pb_indexDiv = $('pb_indexDiv');
-    // 上一张按钮
-    var pb_preBtn = $('pb_preBtn');
-    // 下一张按钮
-    var pb_preBtn = $('pb_nextBtn');
-    // 图片figure
-    var pb_figure = $('pb_figure');
-
-    // photoBroswer.onclick = function () {
-    //     pb_closeBtn.onclick();
-    // }
 
     pb_closeBtn.onclick = function () {
         reducePb_figure();
@@ -362,6 +454,9 @@ function photoBroswerConfig() {
     }
 }
 
+
+
+
 /**
  * @method 当屏幕宽度改变时，更新界面布局
  * @description 根据当前屏幕尺寸(仅宽度)和是否显示工具栏模块，重新布局界面
@@ -378,113 +473,4 @@ function updateInterface(isShowTools,isLittleWindow) {
     }else if (isShowTools == false && isLittleWindow == false){
 
     }
-}
-
-
-function composeArticles() {
-
-    writeArticleToLi(
-        '## github+域名实现个人博客\n\n',
-        'images/inner_picture01.jpg',
-        '- 1.创建github账号\n\n ' +
-        '- 2.点击右上角新建代码仓库\n\n' +
-        '- 3.仓库命名为"你的用户名+github.io"\n\n ' +
-        '- 4.购买域名，阿里云.top域名第一年只要1元钱\n\n  ' +
-        '- 5.github仓库创建CNAME文件，内容为域名，加不加www都可以\n\n ' +
-        '- 6.解析域名，选择CNAME，主机记录为www，内容为"github用户名+github.io"\n\n ' +
-        '- 7.打开浏览器，输入域名即可访问github上的代码仓库\n\n' +
-        '- 8.本人使用仅会的html、css+js搭建个人网站，模仿的是litten.m\n\n' +
-        '- 9.也可以使用hexo，内有封装好的主题',
-        new Array("博客","github","原创")
-    );
-
-    writeArticleToLi(
-        '## github+域名实现个人博客\n\n',
-        'images/inner_picture01.jpg',
-        '- 1.创建github账号\n\n ' +
-        '- 2.点击右上角新建代码仓库\n\n' +
-        '- 3.仓库命名为"你的用户名+github.io"\n\n ' +
-        '- 4.购买域名，阿里云.top域名第一年只要1元钱\n\n  ' +
-        '- 5.github仓库创建CNAME文件，内容为域名，加不加www都可以\n\n ' +
-        '- 6.解析域名，选择CNAME，主机记录为www，内容为"github用户名+github.io"\n\n ' +
-        '- 7.打开浏览器，输入域名即可访问github上的代码仓库\n\n' +
-        '- 8.本人使用仅会的html、css+js搭建个人网站，模仿的是litten.m\n\n' +
-        '- 9.也可以使用hexo，内有封装好的主题',
-        new Array("前端","域名","博客","github","原创")
-    );
-
-    writeArticleToLi(
-        '## github+域名实现个人博客\n\n',
-        'images/inner_picture01.jpg',
-        '- 1.创建github账号\n\n ' +
-        '- 2.点击右上角新建代码仓库\n\n' +
-        '- 3.仓库命名为"你的用户名+github.io"\n\n ' +
-        '- 4.购买域名，阿里云.top域名第一年只要1元钱\n\n  ' +
-        '- 5.github仓库创建CNAME文件，内容为域名，加不加www都可以\n\n ' +
-        '- 6.解析域名，选择CNAME，主机记录为www，内容为"github用户名+github.io"\n\n ' +
-        '- 7.打开浏览器，输入域名即可访问github上的代码仓库\n\n' +
-        '- 8.本人使用仅会的html、css+js搭建个人网站，模仿的是litten.m\n\n' +
-        '- 9.也可以使用hexo，内有封装好的主题',
-        new Array("博客","github","原创","网页开发","litten.me","个人网站")
-    );
-
-    writeArticleToLi(
-        '## github+域名实现个人博客\n\n',
-        'images/inner_picture01.jpg',
-        '- 1.创建github账号\n\n ' +
-        '- 2.点击右上角新建代码仓库\n\n' +
-        '- 3.仓库命名为"你的用户名+github.io"\n\n ' +
-        '- 4.购买域名，阿里云.top域名第一年只要1元钱\n\n  ' +
-        '- 5.github仓库创建CNAME文件，内容为域名，加不加www都可以\n\n ' +
-        '- 6.解析域名，选择CNAME，主机记录为www，内容为"github用户名+github.io"\n\n ' +
-        '- 7.打开浏览器，输入域名即可访问github上的代码仓库\n\n' +
-        '- 8.本人使用仅会的html、css+js搭建个人网站，模仿的是litten.m\n\n' +
-        '- 9.也可以使用hexo，内有封装好的主题',
-        new Array("博客","github","原创")
-    );
-
-    writeArticleToLi(
-        '## github+域名实现个人博客\n\n',
-        'images/inner_picture01.jpg',
-        '- 1.创建github账号\n\n ' +
-        '- 2.点击右上角新建代码仓库\n\n' +
-        '- 3.仓库命名为"你的用户名+github.io"\n\n ' +
-        '- 4.购买域名，阿里云.top域名第一年只要1元钱\n\n  ' +
-        '- 5.github仓库创建CNAME文件，内容为域名，加不加www都可以\n\n ' +
-        '- 6.解析域名，选择CNAME，主机记录为www，内容为"github用户名+github.io"\n\n ' +
-        '- 7.打开浏览器，输入域名即可访问github上的代码仓库\n\n' +
-        '- 8.本人使用仅会的html、css+js搭建个人网站，模仿的是litten.m\n\n' +
-        '- 9.也可以使用hexo，内有封装好的主题',
-        new Array("博客","github","原创")
-    );
-
-    writeArticleToLi(
-        '## github+域名实现个人博客\n\n',
-        'images/inner_picture01.jpg',
-        '- 1.创建github账号\n\n ' +
-        '- 2.点击右上角新建代码仓库\n\n' +
-        '- 3.仓库命名为"你的用户名+github.io"\n\n ' +
-        '- 4.购买域名，阿里云.top域名第一年只要1元钱\n\n  ' +
-        '- 5.github仓库创建CNAME文件，内容为域名，加不加www都可以\n\n ' +
-        '- 6.解析域名，选择CNAME，主机记录为www，内容为"github用户名+github.io"\n\n ' +
-        '- 7.打开浏览器，输入域名即可访问github上的代码仓库\n\n' +
-        '- 8.本人使用仅会的html、css+js搭建个人网站，模仿的是litten.m\n\n' +
-        '- 9.也可以使用hexo，内有封装好的主题',
-        new Array("博客","github","原创")
-    );
-
-    writeArticleToLi(
-        '## github+域名实现个人博客\n\n',
-        'images/inner_picture01.jpg',
-        '- 1.创建github账号\n\n ' +
-        '- 2.点击右上角新建代码仓库\n\n' +
-        '- 3.仓库命名为"你的用户名+github.io"\n\n ' +
-        '- 4.购买域名，阿里云.top域名第一年只要1元钱\n\n  ' +
-        '- 5.github仓库创建CNAME文件，内容为域名，加不加www都可以\n\n ' +
-        '- 6.解析域名，选择CNAME，主机记录为www，内容为"github用户名+github.io"\n\n ' +
-        '- 7.打开浏览器，输入域名即可访问github上的代码仓库\n\n' +
-        '- 8.本人使用仅会的html、css+js搭建个人网站，模仿的是litten.m\n\n' +
-        '- 9.也可以使用hexo，内有封装好的主题',
-        new Array("博客","github","原创")
-    );
 }
