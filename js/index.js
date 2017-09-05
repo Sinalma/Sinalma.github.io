@@ -48,6 +48,12 @@ window.onload = function () {
     // 相册模块
     var content_ablum = $('content_ablum');
 
+    // 系统方法，当浏览器宽度改变时自动调用
+    window.onresize = function () {
+        tools_windowOnResize();
+        pb_windowOnResize();
+    }
+
     // 切换内容模块
     homeBtn.onclick = function () {
         content_articles.style.display = 'block';
@@ -134,6 +140,7 @@ window.onload = function () {
             content.style.transform = 'translateX(300px)';
             tools.style.transform = 'translateX(300px)';
             content_articles.style.opacity = 0.5;
+            content_ablum.style.opacity = 0.5;
             content.style.backgroundColor = 'transparent';
             isShowTools = true;
             tools.style.boxShadow = 'none';
@@ -141,20 +148,21 @@ window.onload = function () {
             tools.style.transform = 'none';
             content.style.transform = 'none';
             content_articles.style.opacity = 1;
+            content_ablum.style.opacity = 1;
             content.style.backgroundColor = '#eaeaea';
             isShowTools = false;
             tools.style.boxShadow = '1px 1px 5px black';
         }
     }
 
-    // 系统方法，当浏览器宽度改变时自动调用
     // 这里主要处理当工具栏是显示状态时，浏览器宽度逐渐小于等于790px时，改变界面布局
-    window.onresize = function(){
+     function tools_windowOnResize(){
         if (document.documentElement.clientWidth <= 790 && isShowTools == true){
             navi.style.transform = 'translate(300px,0)';
             content.style.backgroundColor = '#eaeaea';
             // content_articles.style.backgroundColor = 'transparent';
             content_articles.style.opacity = 1;
+            content_ablum.style.opacity = 1;
             tools.style.position = 'fixed';
             hud.style.display = 'block';
             tools.style.zIndex = '1200';
@@ -163,6 +171,7 @@ window.onload = function () {
             navi.style.transform = 'none';
             content.style.backgroundColor = 'transparent';
             content_articles.style.opacity = 0.5;
+            content_ablum.style.opacity = 0.5;
             hud.style.display = 'none';
             tools.style.zIndex = '0';
             tools.style.boxShadow = 'none';
@@ -232,14 +241,66 @@ window.onload = function () {
     photoBroswerConfig();
 }
 
+/**
+ * @method 点击图片，弹出图片浏览器显示图片
+ * @description 在figure添加onclick事件，调用此方法，传入参数,本方法内部会对图片尺寸进行相应对处理，达到适应屏幕对尺寸而不被拉伸导致图片不好看
+ * @param imgN 图片名，相对路径
+ * @param desc 图片配字
+ */
+/**
+ * @implemention detail
+ *
+ * */
 function pb_showFigure(imgN,desc) {
     var photoBroswer = $('photoBrowser');
     photoBroswer.style.display = 'block';
+    var pb_width = photoBroswer.offsetWidth;
+    var pb_height = photoBroswer.offsetHeight;
+    var imgSuitableWH = pb_width > pb_height ? pb_height-45*2 : pb_width;
     var pb_img = $('pb_img');
-    var pb_figcaption = $('pb_figcaption');
     pb_img.setAttribute('src',imgN);
+    var pb_figcaption = $('pb_figcaption');
+    var img_width = '0';
+    var img_height = '0';
+    var img = new Image();
+    img.src = imgN;
+
+    var imgSuitableW = pb_width - 50 * 2;
+    var imgSuitableH = pb_height - 45 * 2;
+    img.onload = function () {
+        img_width = this.width;
+        img_height = this.height;
+        // 默认根据高度，让宽度自动适应
+        pb_figure.style.height = imgSuitableWH+'px';
+        resetImgSize();
+
+    }
+
+    /**
+     * 根据浏览器宽高，重新设置图片的尺寸
+     */
+    function resetImgSize() {
+        if (img_width >= img_height){
+            pb_figure.style.width = imgSuitableW + 'px';
+            pb_figure.style.height = (1-((img_width-imgSuitableW)/img_width))*img_height+'px';
+        }else {
+
+            pb_figure.style.height = imgSuitableH + 'px';
+            pb_figure.style.width = (1-((img_height-imgSuitableH)/img_height))*img_width+'px';
+        }
+    }
+
+    // 图片figure
+    var pb_figure = $('pb_figure');
     pb_figcaption.innerText = desc;
 
+    pb_figure.style.width = img_width+'px';
+
+    function pb_windowOnResize() {
+        imgSuitableW = photoBroswer.offsetWidth -100;
+        imgSuitableH = photoBroswer.offsetHeight - 90;
+        resetImgSize();
+    }
 }
 
 /**
@@ -289,15 +350,13 @@ function photoBroswerConfig() {
     }
     // 放大图片
     function enlargePb_figure() {
-        pb_figure.style.width = '90%';
-        pb_figure.style.height = '120%';
+        pb_figure.style.transform = 'translate(-50%,-50%) scale(1.2,1.2)';
         pb_isBig = true;
         pb_magnifierBtn.style.backgroundPosition = '-146px -15px';
     }
     // 缩小图片
     function reducePb_figure() {
-        pb_figure.style.width = '70%';
-        pb_figure.style.height = '100%';
+        pb_figure.style.transform = 'translate(-50%,-50%) scale(1,1)';
         pb_isBig = false;
         pb_magnifierBtn.style.backgroundPosition = '-102px -15px';
     }

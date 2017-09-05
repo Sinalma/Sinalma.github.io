@@ -184,11 +184,11 @@ body{
 .tools .introduction>li{
     margin-bottom: 10px;
 }
-.tools .introduction>li:first-child{
-    font-size: 23px;
-    margin-bottom: 20px;
-}
-.tools .introduction>li:nth-child(6){
+/*.tools .introduction>li:first-child{*/
+    /*font-size: 23px;*/
+    /*margin-bottom: 20px;*/
+/*}*/
+.tools .introduction>li:nth-child(5){
     margin-top: 20px;
 }
 /*工具栏所有文章模块*/
@@ -540,9 +540,11 @@ body{
     left:50%;
     /*先缩小，弹出图片浏览器后放大*/
     transform: translate(-50%,-50%);
-    width: 70%;
-    height: 100%;
-    transition: all 0.7s ease-in-out 0s;
+    /*width: 70%;*/
+    /*height: 100%;*/
+    width: 575px;
+    height: 575px;
+    transition: all 0.1s ease-in-out 0s;
 }
 .photoBrowser .pb_figure>a>img{
     width: 100%;
