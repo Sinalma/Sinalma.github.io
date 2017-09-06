@@ -130,6 +130,7 @@ function createMoreBtn() {
 // 创建正文
 function createArtContent(artText) {
     var div = document.createElement('div');
+    div.style.display = 'none';
     div.style.width = '100%';
     div.style.height = '250px';
     div.style.fontSize = '17px';
@@ -143,31 +144,37 @@ function createArtContent(artText) {
     // div.style.whiteSpace = 'nowrap';
     // div.style.textOverflow = 'ellipsis';
     // div.style.overflow = 'hidden';
+    div.style.display = 'block';
     return div;
 }
 
 // 创建第一张配图
 function createPicture(imaName) {
     var img = document.createElement('img');
+    img.style.display = 'none';
     img.style.width = '400px';
     // img.style.width = '100%';
     img.style.height = '250px';
     img.setAttribute('src',imaName);
     img.style.marginTop = '30px';
+    img.style.display = 'block';
     return img;
 }
 
 // 创建标题
 function createTitle(title) {
     var titleDiv = document.createElement('div');
+    titleDiv.style.display = 'none';
     titleDiv.innerHTML = marked(title);
     titleDiv.style.color = '#69697f';
+    titleDiv.style.display = 'block';
     return titleDiv;
 }
 
 // 创建文章左侧黑色竖线条
 function createLeftLine() {
     var leftLine = document.createElement('div');
+    leftLine.style.display = 'none';
     leftLine.style.width = '5px';
     leftLine.style.height = '80px';
     leftLine.style.position = 'absolute';
@@ -175,6 +182,7 @@ function createLeftLine() {
     leftLine.style.top = '0';
     leftLine.style.backgroundColor = 'black';
     leftLine.className = 'article_leftLine';
+    leftLine.style.display = 'block';
     return leftLine;
 }
 
@@ -182,6 +190,7 @@ function createLeftLine() {
 function createLi() {
     var li = document.createElement('li');
     content_articles.appendChild(li);
+    li.style.display = 'none';
     li.style.backgroundColor = 'white';
     // li.style.width = '100%';
     li.style.height = '800px';//765
@@ -197,6 +206,7 @@ function createLi() {
     li.style.fontSize = '17px';
     li.style.color = '#69697f';
     // li.style.backgroundColor = 'red';
+    li.style.display = 'block';
     return li;
 }
 

@@ -50,6 +50,8 @@ var content;
 var content_articles;
 // 相册模块
 var content_ablum;
+// 相册视频按钮
+var content_ablum_video_btn;
 
 // 显示工具栏后出现的蒙版
 var hud;
@@ -76,6 +78,8 @@ var pb_figure;
 
 
 // 变量>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+// 内容相册模块高度
+var content_ablum_width;
 // 当前图片浏览器显示的图片尺寸
 var pb_img_widht;
 var pb_img_height;
@@ -85,6 +89,7 @@ var pb_height;
 // 合适的图片宽高
 var imgSuitableW;
 var imgSuitableH;
+
 
 
 function getHtmlElements() {
@@ -130,6 +135,8 @@ function getHtmlElements() {
     content_articles = $('content_articles');
     // 相册模块
     content_ablum = $('content_ablum');
+    // 相册视频按钮
+    content_ablum_video_btn = $('ablum_menu_video');
 
     // 显示工具栏后出现的蒙版
     hud = $('hud');
@@ -181,10 +188,32 @@ window.onload = function () {
 
 // 系统方法，当浏览器宽度改变时自动调用
 window.onresize = function () {
+    // 处理工具栏
     tools_windowOnResize();
+    // 处理图片浏览器
     pb_windowOnResize();
+    // 重新设置内容相册模块图片尺寸(一行放四张图片，平分宽度，高度相等于宽度)
+    resetContentAblumPicturesSize();
 }
 
+// 重新设置内容相册模块图片尺寸(一行放四张图片，平分宽度，高度相等于宽度)
+function resetContentAblumPicturesSize() {
+    // padding left right = 30 ,margin left right = 30 , scroll bar = 15
+    content_ablum_width = content_ablum.offsetWidth - 120 - 15;
+    if (document.documentElement.clientWidth <= 790){
+        content_ablum_width = content_ablum.offsetWidth - 10 * 2;
+    }
+    var picW = content_ablum_width / 4;
+    // var figures = document.getElementsByTagName('figure');
+    var figures = document.getElementsByClassName('photo_li_figure');
+    for (var i=0;i<figures.length;i++){
+        var fig = figures[i];
+        fig.style.display = 'none';
+        fig.style.width = picW+'px';
+        fig.style.height = picW+'px';
+        fig.style.display = 'inline-block';
+    }
+}
 
 // 处理工具栏的显示和隐藏
 function showOrHideTools() {
@@ -197,6 +226,12 @@ function showOrHideTools() {
     ablumBtn.onclick = function () {
         content_articles.style.display = 'none';
         content_ablum.style.display = 'block';
+        // 处理内容模块相册图片(初始化)
+        resetContentAblumPicturesSize();
+    }
+
+    content_ablum_video_btn.onclick = function () {
+        alert("Not found video now.");
     }
 
     hud.onclick = function () {
@@ -236,6 +271,18 @@ function showOrHideTools() {
     aboutBtn.onclick = function () {
         isAboutMeBtn = true;
         showTools(isAboutMeBtn);
+    }
+
+    // 点击了内容模块，隐藏工具栏
+    content_articles.onclick = function () {
+        if (isShowTools == true){
+            showTools(isAboutMeBtn);
+        }
+    }
+    content_ablum.onclick = function () {
+        if (isShowTools == true){
+            showTools(isAboutMeBtn);
+        }
     }
 
     /**
@@ -387,8 +434,11 @@ function pb_showFigure(imgN,desc) {
     img.onload = function () {
         pb_img_widht = this.width;
         pb_img_height = this.height;
-        // 默认根据高度，让宽度自动适应
-        resetImgSize();
+        // 初始化figure尺寸
+        pb_height = photoBroswer.offsetHeight;
+        imgSuitableH = pb_height - 45 * 2;
+        pb_figure.style.height = imgSuitableH+'px';
+        pb_figure.style.width = (1-((pb_img_height-imgSuitableH)/pb_img_height))*pb_img_widht+'px';
     }
 }
 
@@ -442,7 +492,7 @@ function photoBroswerConfig() {
     }
     // 放大图片
     function enlargePb_figure() {
-        pb_figure.style.transform = 'translate(-50%,-50%) scale(1.2,1.2)';
+        pb_figure.style.transform = 'translate(-50%,-50%) scale(1.5,1.5)';
         pb_isBig = true;
         pb_magnifierBtn.style.backgroundPosition = '-146px -15px';
     }

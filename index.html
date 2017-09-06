@@ -51,15 +51,6 @@
 
     <!--小盒子工具模块-->
     <div class="tools" id="tools">
-        <!--浏览器宽度<=790px时显示-->
-        <div class="tools_selectBar">
-            <!--
-             class="tools_all_art_btn"
-             class="tools_about_me_btn"
-             -->
-            <a>所有文章</a>
-            <a>关于我</a>
-        </div>
         <!--关于我-->
         <ul class="introduction" id="introduction">
             <!--<li>Sin alma</li>-->
@@ -83,6 +74,11 @@
             <div class="tools_tags" id="tools_tags"></div>
             <ul class="tools_art_list"></ul>
         </ul>
+        <!--浏览器宽度<=790px时显示-->
+        <div class="tools_selectBar">
+            <button class="tools_all_art_btn">所有文章</button>
+            <button class="tools_about_me_btn">关于我</button>
+        </div>
     </div><!--小盒子工具模块-->
 
     <!--内容模块-->
@@ -97,47 +93,50 @@
                 <h1>相册</h1>
                 <div class="ablum_menu">
                     <a class="ablum_menu_photo">照片</a>
-                    <a class="ablum_menu_video">视频</a>
+                    <a class="ablum_menu_video" id="ablum_menu_video">视频</a>
                 </div>
             </li>
             <!--2017-->
             <li class="photo_li">
                 <p photo_li_date>2017</p>
-                <figure onclick="pb_showFigure('photos/2017/shuaiqi.jpeg','非常的帅气')">
-                    <a>
-                        <img src="photos/2017/shuaiqi.jpeg">
-                    </a>
+                <figure class="photo_li_figure" onclick="pb_showFigure('photos/2017/shuaiqi.jpeg','非常的帅气')">
+                    <img src="photos/2017/shuaiqi.jpeg">
                     <figcaption style="display:none">非常的帅气</figcaption>
-                </figure>
-                <figure onclick="pb_showFigure('photos/2017/hall.jpeg','幽静的山间，甚是想念。')">
-                    <a>
-                        <img src="photos/2017/hall.jpeg">
-                    </a>
-                    <figcaption style="display:none">幽静的山间，甚是想念。</figcaption>
-                </figure>
-                <figure onclick="pb_showFigure('photos/2017/sobad.jpeg','可怕')">
-                    <a>
-                        <img src="photos/2017/sobad.jpeg">
-                    </a>
+                </figure><!--|--><figure class="photo_li_figure" onclick="pb_showFigure('photos/2017/hall.jpeg','幽静的山间，甚是想念。')">
+                <img src="photos/2017/hall.jpeg">
+                <figcaption style="display:none">幽静的山间，甚是想念。</figcaption>
+                </figure><!--|--><figure class="photo_li_figure" onclick="pb_showFigure('photos/2017/sobad.jpeg','可怕')">
+                    <img src="photos/2017/sobad.jpeg">
                     <figcaption style="display:none">可怕</figcaption>
+                </figure><!--|--><figure class="photo_li_figure" onclick="pb_showFigure('photos/2017/work.jpeg','coding...')">
+                <img src="photos/2017/work.jpeg">
+                <figcaption style="display:none">coding...</figcaption>
                 </figure>
             </li>
             <!--2016-->
             <li class="photo_li">
                 <p photo_li_date>2016</p>
-                <figure onclick="pb_showFigure('photos/2016/lie.jpg','偷拍')">
+                <figure class="photo_li_figure" onclick="pb_showFigure('photos/2016/sunzhongshan.jpeg','天下为公。')">
+                <a>
+                    <img src="photos/2016/sunzhongshan.jpeg">
+                </a>
+                <figcaption style="display:none">天下为公。</figcaption>
+                </figure><!--|--><figure class="photo_li_figure" onclick="pb_showFigure('photos/2016/goodbeyqy.jpeg','走了，走了。心中虽感万千不舍，奈何非走不可，感谢关注过我的人。')">
+                <a>
+                    <img src="photos/2016/goodbeyqy.jpeg">
+                </a>
+                <figcaption style="display:none">走了，走了。</figcaption>
+            </figure><!--|--><figure class="photo_li_figure" onclick="pb_showFigure('photos/2016/lie.jpg','偷拍')">
                     <a>
                         <img src="photos/2016/lie.jpg">
                     </a>
                     <figcaption style="display:none">偷拍</figcaption>
-                </figure>
-                <figure onclick="pb_showFigure('photos/2016/35.pic.jpg','科室聚餐')">
+                </figure><!--|--><figure class="photo_li_figure" onclick="pb_showFigure('photos/2016/35.pic.jpg','科室聚餐')">
                     <a>
                         <img src="photos/2016/35.pic.jpg">
                     </a>
                     <figcaption style="display:none">科室聚餐</figcaption>
-                </figure>
-                <figure onclick="pb_showFigure('photos/2016/mmexport1460735205796.jpg','鸡是好鸡，正不正经我就不知道了。')">
+                </figure><!--|--><figure class="photo_li_figure" onclick="pb_showFigure('photos/2016/mmexport1460735205796.jpg','鸡是好鸡，正不正经我就不知道了。')">
                 <a>
                     <img src="photos/2016/mmexport1460735205796.jpg">
                 </a>
@@ -147,47 +146,54 @@
             <!--2015-->
             <li class="photo_li">
                 <p photo_li_date>2015</p>
-                <figure onclick="pb_showFigure('photos/2015/zipai.jpg','帅气的发型')">
+                <figure class="photo_li_figure" onclick="pb_showFigure('photos/2015/zipai.jpg','帅气的发型')">
                     <a>
                         <img src="photos/2015/zipai.jpg">
                     </a>
                     <figcaption style="display:none">帅气的发型~</figcaption>
-                </figure>
-                <figure onclick="pb_showFigure('photos/2015/happy.jpg','Stay simple，stay navie.')">
+                </figure><!--|--><figure class="photo_li_figure" onclick="pb_showFigure('photos/2015/happy.jpg','Stay simple，stay navie.')">
                     <a>
                         <img src="photos/2015/happy.jpg">
                     </a>
                     <figcaption style="display:none">Stay simple，stay navie.</figcaption>
-                </figure>
-                <figure onclick="pb_showFigure('photos/2015/wa.jpg','小家伙,还想咬我.')">
+                </figure><!--|--><figure class="photo_li_figure" onclick="pb_showFigure('photos/2015/wa.jpg','小家伙,还想咬我.')">
                     <a>
                         <img src="photos/2015/wa.jpg">
                     </a>
-                    <figcaption style="display:none">小家伙,还想咬我.</figcaption>
+                    <figcaption style="display:none">小家伙,还想咬我.</figcaption></figure><!--|--><figure class="photo_li_figure" onclick="pb_showFigure('photos/2015/girl.jpg','赏花季。')">
+                <a>
+                    <img src="photos/2015/girl.jpg">
+                </a>
+                <figcaption style="display:none">赏花季。</figcaption></figure><!--|--><figure class="photo_li_figure" onclick="pb_showFigure('photos/2015/peixun.jpg','隔三差五的培训。')">
+                <a>
+                    <img src="photos/2015/peixun.jpg">
+                </a>
+                <figcaption style="display:none">隔三差五的培训。</figcaption></figure><!--|--><figure class="photo_li_figure" onclick="pb_showFigure('photos/2015/qyxrmyy.jpg','很困，很困，贼早。')">
+                <a>
+                    <img src="photos/2015/qyxrmyy.jpg">
+                </a>
+                <figcaption style="display:none">很困，很困，贼早。</figcaption>
                 </figure>
             </li>
             <!--2014-->
             <li class="photo_li">
                 <p photo_li_date>2014</p>
-                <figure onclick="pb_showFigure('photos/2014/2014_04_10_12_25_00.jpg','专注')">
+                <figure class="photo_li_figure" onclick="pb_showFigure('photos/2014/2014_04_10_12_25_00.jpg','专注')">
                     <a>
                         <img src="photos/2014/2014_04_10_12_25_00.jpg">
                     </a>
                     <figcaption style="display:none">专注</figcaption>
-                </figure>
-                <figure onclick="pb_showFigure('photos/2014/biyezhao.jpg','非常的幸运，四个人在同一个宿舍两年，还都是老表。')">
+                </figure><!--|--><figure class="photo_li_figure" onclick="pb_showFigure('photos/2014/biyezhao.jpg','非常的幸运，四个人在同一个宿舍两年，还都是老表。')">
                     <a>
                         <img src="photos/2014/biyezhao.jpg">
                     </a>
                     <figcaption style="display:none">非常的幸运，四个人在同一个宿舍两年，还都是老表。</figcaption>
-                </figure>
-                <figure onclick="pb_showFigure('photos/2014/ktv.jpg','最后的狂欢，人生最后一次天真无也的狂欢')">
+                </figure><!--|--><figure class="photo_li_figure" onclick="pb_showFigure('photos/2014/ktv.jpg','最后的狂欢，人生最后一次天真无也的狂欢')">
                     <a>
                         <img src="photos/2014/ktv.jpg">
                     </a>
                     <figcaption style="display:none">最后的狂欢，人生最后一次天真无也的狂欢</figcaption>
-                </figure>
-                <figure onclick="pb_showFigure('photos/2014/shanghai.jpg','我在对你笑.')">
+                </figure><!--|--><figure class="photo_li_figure" onclick="pb_showFigure('photos/2014/shanghai.jpg','我在对你笑.')">
                     <a>
                         <img src="photos/2014/shanghai.jpg">
                     </a>
@@ -197,13 +203,12 @@
             <!--2012-->
             <li class="photo_li">
                 <p photo_li_date>2012</p>
-                <figure onclick="pb_showFigure('photos/2012/zhongshan.jpg','猜猜拍照的是谁。')">
+                <figure class="photo_li_figure" onclick="pb_showFigure('photos/2012/zhongshan.jpg','猜猜拍照的是谁。')">
                     <a>
                         <img src="photos/2012/zhongshan.jpg">
                     </a>
                     <figcaption style="display:none">猜猜拍照的是谁。</figcaption>
-                </figure>
-                <figure onclick="pb_showFigure('photos/2012/shanya.jpg','非常的舒服。')">
+                </figure><!--|--><figure class="photo_li_figure" onclick="pb_showFigure('photos/2012/shanya.jpg','非常的舒服。')">
                     <a>
                         <img src="photos/2012/shanya.jpg">
                     </a>
