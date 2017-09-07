@@ -12,6 +12,9 @@ function $(id) {
 }
 
 // 元素>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+// document.documentElement
+var docElm;
+
 // 导航栏
 var navi;
 var navi_top;
@@ -90,6 +93,8 @@ var imgSuitableW;
 var imgSuitableH;
 
 function getHtmlElements() {
+
+    docElm = document.documentElement;
 
     // 导航栏
     navi = $('navi');
@@ -192,23 +197,18 @@ window.onresize = function () {
     resetContentAblumPicturesSize();
 }
 
-// 重新设置内容相册模块图片尺寸(一行放四张图片，平分宽度，高度相等于宽度)
+
+/**
+ * 初始化和屏幕宽度发生改变时，调用此方法设置或重新设置内容相册模块图片尺寸
+ * 当屏幕宽度  > 590px，一行放四张图片，平分宽度，高度相等于宽度
+ * 当屏幕宽度 <= 590px，一行放两张图片，平分宽度，高度相等于宽度
+ * clientWidth 不包括滚动条宽度
+ * offsetWidth 包括滚动条宽度
+ * padding left right = 30 ,margin left right = 30
+ */
 function resetContentAblumPicturesSize() {
-    // clientWidth 不包括边框
-    // offsetWidth 包括边框
-    // padding left right = 30 ,margin left right = 30 , scroll bar = 15
-    // content_ablum_width = content_ablum.clientWidth - 120;
-    // var picW = content_ablum_width / 4;
-    // if (document.documentElement.clientWidth <= 790){
-    //     content_ablum_width = content_ablum.clientWidth - 10 * 2;
-    // }
-    // if (document.documentElement.clientWidth <= 590){
-    //     // 一行显示两张图片
-    //     picW = content_ablum_width / 2;
-    // }
-    content_ablum_width = document.documentElement.clientWidth <= 790?content_ablum.clientWidth-10*2:content_ablum.clientWidth - 120;
-    var picW = document.documentElement.clientWidth <= 590?content_ablum_width/2:content_ablum_width/4;
-    // var figures = document.getElementsByTagName('figure');
+    content_ablum_width = docElm.clientWidth<=790?content_ablum.clientWidth-10*2:content_ablum.clientWidth-120;
+    var picW = docElm.clientWidth<=590?content_ablum_width/2:content_ablum_width/4;
     var figures = document.getElementsByClassName('photo_li_figure');
     for (var i=0;i<figures.length;i++){
         var fig = figures[i];
@@ -338,6 +338,7 @@ function showOrHideTools() {
     }
 }
 
+
 // 处理工具栏是否显示tag的按钮
 function dealToolsTagBtnClick() {
     var isShowTag = true;
@@ -352,6 +353,7 @@ function dealToolsTagBtnClick() {
         }
     }
 }
+
 
 // 这里主要处理当工具栏是显示状态时，浏览器宽度逐渐小于等于790px时，改变界面布局
 function tools_windowOnResize(){
@@ -377,6 +379,7 @@ function tools_windowOnResize(){
     // 隐藏或显示文章左侧黑条
     showOrHideAllArticlesLftLine();
 }
+
 
 /**
  * 当宽度<=790px隐藏或显示所有文章左边黑色线条
@@ -421,6 +424,7 @@ function showOrHideAllArticlesLftLine() {
     }
 }
 
+
 /**
  * @method 点击图片，弹出图片浏览器显示图片
  * @description 在figure添加onclick事件，调用此方法，传入参数,本方法内部会对图片尺寸进行相应对处理，达到适应屏幕对尺寸而不被拉伸导致图片不好看
@@ -447,16 +451,18 @@ function pb_showFigure(imgN,desc) {
     }
 }
 
+
 // 屏幕尺寸发生改变时调用
 function pb_windowOnResize() {
-    pb_width = photoBroswer.offsetWidth;
-    pb_height = photoBroswer.offsetHeight;
+    pb_width = photoBroswer.clientWidth;
+    pb_height = photoBroswer.clientWidth;
     // imgSuitableW = pb_width - 50 * 2;
     imgSuitableH = pb_height - 45 * 2;
-    imgSuitableW = document.documentElement.clientWidth<=790?pb_width:pb_width - 50 * 2;
+    imgSuitableW = docElm.clientWidth<=790?pb_width:pb_width - 50 * 2;
     // 重新设置图片尺寸
     resetImgSize();
 }
+
 
 /**
  * 根据浏览器宽高，重新设置图片的尺寸
@@ -477,18 +483,30 @@ function resetImgSize() {
  */
 function photoBroswerConfig() {
 
+    // 点击关闭，退出图片浏览器
     pb_closeBtn.onclick = function () {
+        // 如果图片放大，则先缩小图片
         reducePb_figure();
+        // 如果是全屏，则退出全屏
+        pb_fullWindowBtn.onclick();
         photoBroswer.style.display = 'none';
     }
 
+    // 点击图片支持放大缩小
     pb_figure.onclick = function () {
         pb_magnifierBtn.onclick();
     }
 
+    // 点击全屏
+    var pb_isFullScreen = false;
+    pb_fullWindowBtn.onclick = function () {
+        pb_isFullScreen?cancelFullScreen():requestFullScreen();
+        pb_isFullScreen = pb_isFullScreen?false:true;
+        pb_fullWindowBtn.style.backgroundPosition = pb_isFullScreen?'-57px -15px':'-13px -15px';
+    }
 
-    var pb_isBig = false;
     // 点击了放大镜
+    var pb_isBig = false;
     pb_magnifierBtn.onclick = function () {
         if (pb_isBig == false){
             enlargePb_figure();
@@ -510,8 +528,35 @@ function photoBroswerConfig() {
     }
 }
 
+/**
+ * 进入全屏模式
+ */
+function requestFullScreen() {
+    if (docElm.requestFullscreen) {//W3C
+        docElm.requestFullscreen();
+    } else if (docElm.mozRequestFullScreen) {//FireFox
+        docElm.mozRequestFullScreen();
+    } else if (docElm.webkitRequestFullScreen) {//Chrome等
+        docElm.webkitRequestFullScreen();
+    } else if (docElm.msRequestFullscreen) {//IE11
+        docElm.msRequestFullscreen();
+    }
+}
 
-
+/**
+ * 退出全屏
+ */
+function cancelFullScreen() {
+    if (document.exitFullscreen) {//W3C
+        document.exitFullscreen();
+    } else if (document.mozCancelFullScreen) {//FireFox
+        document.mozCancelFullScreen();
+    } else if (document.webkitCancelFullScreen) {//Chrome等
+        document.webkitCancelFullScreen();
+    } else if (document.msExitFullscreen) {//IE11
+        document.msExitFullscreen();
+    }
+}
 
 /**
  * @method 当屏幕宽度改变时，更新界面布局
