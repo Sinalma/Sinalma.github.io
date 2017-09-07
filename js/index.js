@@ -76,7 +76,6 @@ var pb_nextBtn;
 // 图片figure
 var pb_figure;
 
-
 // 变量>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 // 内容相册模块高度
 var content_ablum_width;
@@ -89,8 +88,6 @@ var pb_height;
 // 合适的图片宽高
 var imgSuitableW;
 var imgSuitableH;
-
-
 
 function getHtmlElements() {
 
@@ -159,7 +156,6 @@ function getHtmlElements() {
     pb_nextBtn = $('pb_nextBtn');
     // 图片figure
     pb_figure = $('pb_figure');
-
 }
 
 /**
@@ -198,12 +194,20 @@ window.onresize = function () {
 
 // 重新设置内容相册模块图片尺寸(一行放四张图片，平分宽度，高度相等于宽度)
 function resetContentAblumPicturesSize() {
+    // clientWidth 不包括边框
+    // offsetWidth 包括边框
     // padding left right = 30 ,margin left right = 30 , scroll bar = 15
-    content_ablum_width = content_ablum.offsetWidth - 120 - 15;
-    if (document.documentElement.clientWidth <= 790){
-        content_ablum_width = content_ablum.offsetWidth - 10 * 2;
-    }
-    var picW = content_ablum_width / 4;
+    // content_ablum_width = content_ablum.clientWidth - 120;
+    // var picW = content_ablum_width / 4;
+    // if (document.documentElement.clientWidth <= 790){
+    //     content_ablum_width = content_ablum.clientWidth - 10 * 2;
+    // }
+    // if (document.documentElement.clientWidth <= 590){
+    //     // 一行显示两张图片
+    //     picW = content_ablum_width / 2;
+    // }
+    content_ablum_width = document.documentElement.clientWidth <= 790?content_ablum.clientWidth-10*2:content_ablum.clientWidth - 120;
+    var picW = document.documentElement.clientWidth <= 590?content_ablum_width/2:content_ablum_width/4;
     // var figures = document.getElementsByTagName('figure');
     var figures = document.getElementsByClassName('photo_li_figure');
     for (var i=0;i<figures.length;i++){
@@ -435,10 +439,11 @@ function pb_showFigure(imgN,desc) {
         pb_img_widht = this.width;
         pb_img_height = this.height;
         // 初始化figure尺寸
-        pb_height = photoBroswer.offsetHeight;
-        imgSuitableH = pb_height - 45 * 2;
-        pb_figure.style.height = imgSuitableH+'px';
-        pb_figure.style.width = (1-((pb_img_height-imgSuitableH)/pb_img_height))*pb_img_widht+'px';
+        // pb_height = photoBroswer.offsetHeight;
+        // imgSuitableH = pb_height - 45 * 2;
+        // pb_figure.style.height = imgSuitableH+'px';
+        // pb_figure.style.width = (1-((pb_img_height-imgSuitableH)/pb_img_height))*pb_img_widht+'px';
+        pb_windowOnResize();
     }
 }
 
@@ -446,8 +451,9 @@ function pb_showFigure(imgN,desc) {
 function pb_windowOnResize() {
     pb_width = photoBroswer.offsetWidth;
     pb_height = photoBroswer.offsetHeight;
-    imgSuitableW = pb_width - 50 * 2;
+    // imgSuitableW = pb_width - 50 * 2;
     imgSuitableH = pb_height - 45 * 2;
+    imgSuitableW = document.documentElement.clientWidth<=790?pb_width:pb_width - 50 * 2;
     // 重新设置图片尺寸
     resetImgSize();
 }
